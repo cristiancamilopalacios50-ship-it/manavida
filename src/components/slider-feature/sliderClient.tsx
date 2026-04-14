@@ -64,9 +64,17 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                                         {product.description}
                                     </p>
                                     <div className="flex items-baseline gap-4 mb-8">
-                                        <span className="text-3xl md:text-5xl font-headline font-black text-on-surface">
-                                            {formatPrice(product.price)}
-                                        </span>
+                                   
+                                           {product.presentationAndPrice?.length ? (
+                                            <span className="text-3xl md:text-5xl font-headline font-black text-on-surface">
+                                                <p className="text-sm font-normal">Desde </p>
+                                                {formatPrice(Math.min(...product.presentationAndPrice.map((p) => p.price ?? 0)))}
+                                            </span>
+                                        ) : (
+                                            <span className="text-3xl md:text-5xl font-headline font-black text-on-surface">
+                                                {product.price ? formatPrice(product.price) : ""}
+                                            </span>
+                                        )}
                                     </div>
                                     <div className="flex gap-4 w-fit">
                                         {product.buttonProduct?.length > 0 &&

@@ -4,4 +4,5 @@ export interface GlobalSiteResponse {
   categoryDescription: string;
   complementTextCategories: string;
   whatsappBtnText: string;
+  fieldText:string;
 }

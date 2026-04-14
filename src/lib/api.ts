@@ -22,7 +22,7 @@ export async function getHome(): Promise<StrapiResponse<HomeHero> | null> {
 export async function getFeatureSlider(): Promise<StrapiResponse<Product[]> | null> {
   try {
     const res = await fetch(
-      `${API_URL}/api/products?filters[productFeatured][$eq]=destacado&populate[image][fields]=url&populate[buttonProduct][populate]=*`
+      `${API_URL}/api/products?filters[productFeatured][$eq]=destacado&populate[image][fields]=url&populate[buttonProduct][populate]=*&populate[presentationAndPrice][fields][0]=*`
     );
     if (!res.ok) throw new Error("Error fetching featured products");
     return res.json();
@@ -47,7 +47,7 @@ export async function getCategories(): Promise<StrapiResponse<Category[]> | null
 export async function getProducts(): Promise<StrapiResponse<Product[]> | null> {
   try {
     const res = await fetch(
-      `${API_URL}/api/products?populate[categories][fields][0]=slug&populate[categories][fields][1]=name&populate[image][fields][0]=url&populate[buttonProduct][populate]=*`
+      `${API_URL}/api/products?populate[categories][fields][0]=slug&populate[categories][fields][1]=name&populate[image][fields][0]=url&populate[buttonProduct][populate]=*&populate[presentationAndPrice][fields][0]=*`
     );
     if (!res.ok) throw new Error("Error fetching products");
     return res.json();
@@ -61,7 +61,7 @@ export async function getProductBySlug(slug: string): Promise<StrapiResponse<Pro
   try {
   
     const res = await fetch(
-      `${API_URL}/api/products?filters[sku][$eq]=${slug}&populate[image][fields][0]=url&populate[image][fields][1]=name&populate[image][fields][2]=alternativeText&populate[categories][fields][0]=name&populate[categories][fields][1]=slug&populate[compositionProd][fields][0]=*&populate[presentationAndPrice][fields][0]=*`
+      `${API_URL}/api/products?filters[sku][$eq]=${slug}&populate[image][fields][0]=url&populate[image][fields][1]=name&populate[image][fields][2]=alternativeText&populate[categories][fields][0]=name&populate[categories][fields][1]=slug&populate[compositionProd][fields][0]=*&populate[presentationAndPrice][fields][0]=*&populate[imageConsume][fields][0]=url&populate[imageConsume][fields][1]=name&populate[imageConsume][fields][2]=alternativeText&populate[consumeProd][fields][0]=*`
     );
     
     

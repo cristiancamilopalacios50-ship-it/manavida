@@ -33,21 +33,28 @@ export interface Product {
   saving?: number;
   laboratory?: string;
   categories?: Category[];
-  titleBenefits:string;
-  descBenefits:string;
-  descFormulation?:string;
-  titleFormulation?:string;
-  compositionProd?: CompositionProduct[];
+  titleBenefits: string;
+  descBenefits: string;
+  descFormulation?: string;
+  titleFormulation?: string;
+  compositionProd: CompositionProduct[];
   presentationAndPrice: PresentationAndPrice[];
+  titleConsume: string;
+  imageConsume: StrapiImage[];
+  consumeProd: ConsumeProd[];
 }
 export interface PropsProduct {
   params: Promise<{ slug: string }>;
 }
 
 interface CompositionProduct {
-  name?: string;
-  description?: string;
-  composition?: string;
+  name: string;
+  description: string;
+  composition: string;
+}
+export interface ConsumeProd {
+  title: string;
+  description: string;
 }
 export interface PresentationAndPrice {
   price: number;
@@ -55,7 +62,8 @@ export interface PresentationAndPrice {
 }
 export interface StrapiImage {
   url: string;
-  alternativeText?: string;
+  alternativeText: string;
+  name: string;
 }
 
 export interface StrapiButton {

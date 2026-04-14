@@ -1,4 +1,5 @@
 
+import Image from "next/image";
 import styles from "./errorSection.module.css";
 
 export const ComponentError = () => {
@@ -9,8 +10,8 @@ export const ComponentError = () => {
                 {/* Visual */}
                 <div className="relative flex justify-center order-2 md:order-1">
                     <div className="relative w-full aspect-square max-w-[320px] bg-surface-container-low rounded-[2rem] flex items-center justify-center overflow-hidden">
-                        <img src="/error.png" alt="Scientific glassware with liquid" className="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-multiply" data-alt="Minimalist scientific laboratory setting with glass test tubes and subtle bokeh lighting in a clinical white and emerald palette" />
-
+                     
+                        <Image src="/error.png" alt="Scientific glassware with liquid" className="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-multiply" data-alt="Minimalist scientific laboratory setting with glass test tubes and subtle bokeh lighting in a clinical white and emerald palette" width={500} height={500} />
                         <div className="relative z-10 flex flex-col items-center">
                             <div className="w-24 h-24 rounded-full bg-surface-container-highest flex items-center justify-center mb-4">
                                 <span

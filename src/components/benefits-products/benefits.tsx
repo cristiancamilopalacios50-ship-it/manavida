@@ -22,8 +22,8 @@ export default function BenefitsModule({ benefits, title, description }: { benef
                             key={index}
                             className="bg-white p-8 rounded-2xl shadow-sm space-y-4"
                         >
-                            <div className="w-12 h-12 bg-secondary-container/20 flex items-center justify-center rounded-xl">
-                                <IconDynamic name={item.icon?.icon as keyof typeof iconMap} className="w-6 h-6 text-secondary" />
+                            <div className="w-12 h-12 bg-secondary-container/20 flex items-center justify-center rounded-xl bg-(--on-primary-container)">
+                                <IconDynamic name={item.icon?.icon as keyof typeof iconMap} className="w-6 h-6 text-secondary text-(--primary)" />
 
                             </div>
                             <h3 className="text-xl font-bold font-['Manrope']">{item.name}</h3>
