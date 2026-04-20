@@ -18,7 +18,11 @@ import {
     BicepsFlexed,
     PillBottle,
     ChevronRight,
-    X
+    X,Search,MoveRight,StepForward,StepBack,
+    ShoppingBasket,
+    ShoppingCart,
+    House
+  
 } from "lucide-react";
 
 export type IconName = keyof typeof iconMap;
@@ -120,7 +124,14 @@ export const cartIcons = {
   truck:Truck,
   bar:Menu,
  chevronRight:ChevronRight, 
- close:X
+ close:X,
+ search:Search,
+ moveRight: MoveRight,
+ stepForward:StepForward,
+ stepBack:StepBack,
+ shoppingBasket:ShoppingBasket,
+ shoppingCart:ShoppingCart,
+ house:House
 };
 
 export const iconMap = {

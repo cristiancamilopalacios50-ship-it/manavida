@@ -7,10 +7,16 @@ import { formatPrice } from "@/utils/priceConvert";
 import Button from "@/components/UI/button/button";
 import IconDynamic from "@/components/UI/icon/icon"
 import { PresentationAndPrice, StrapiImage } from "@/types/home"
-export default function ProductHero({ title, description, categories, saving, laboratory, priceAndPresentations, cta, fieldText, image }: { title: string, description: string, price: number, image: StrapiImage[], categories: Category[], saving?: number, laboratory?: string, priceAndPresentations: PresentationAndPrice[], cta?: string, fieldText?: string }) {
+import { useApp } from "@/context/AppContext";
+export default function ProductHero({ title, description, categories, saving, laboratory, priceAndPresentations, image }: { title: string, description: string, price: number, image: StrapiImage[], categories: Category[], saving?: number, laboratory?: string, priceAndPresentations: PresentationAndPrice[] }) {
   const [selected, setSelected] = useState(0);
+
+  const { globalSite } = useApp();
+
+  const { whatsappBtnText, fieldText } = globalSite?.data ?? {};
+
   return (
-    <section className="mb-20 bg-white max-w-7xl mx-auto px-8 pb-16 mt-20 lg:pb-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center bg-surface-container rounded-3xl shadow-lg">
+    <section className="mb-20 relative bg-white max-w-7xl mx-auto px-8 pb-16 mt-20 lg:pb-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center bg-surface-container rounded-3xl shadow-lg">
 
       {/* Imagen */}
       <div className="relative group">
@@ -67,7 +73,7 @@ export default function ProductHero({ title, description, categories, saving, la
         </div>
 
         <div className="mb-8">
-          {cta && <h3 className="text-sm font-semibold text-slate-900 mb-3">{fieldText} <span className="text-(--primary)">: {cta}</span></h3>}
+          {whatsappBtnText && <h3 className="text-sm font-semibold text-slate-900 mb-3">{fieldText} <span className="text-(--primary)">: {whatsappBtnText}</span></h3>}
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {priceAndPresentations.map((item, index) => (
@@ -113,7 +119,7 @@ export default function ProductHero({ title, description, categories, saving, la
           <div className="items-center gap-2 text-sm text-on-surface-variant block text-center">
 
             <Button
-              title={cta}
+              title={whatsappBtnText}
               href="https://wa.me/1234567890"
 
             />

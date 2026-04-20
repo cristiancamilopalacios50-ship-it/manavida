@@ -1,11 +1,11 @@
-
 import { Benefits } from "@/types/benefits";
 import IconDynamic from "../UI/icon/icon";
 import { iconMap } from "@/utils/icons";
 
-export default function BenefitsModule({ benefits, title, description }: { benefits: Benefits[], title:string, description:string }) { 
+
+export default function BenefitsClientModule({ benefits , description, title}: { benefits: Benefits[], description:string, title:string}) { 
     return (
-        <section className="bg-surface-container-low py-24 bg-(--surface-container-high) ">
+        <section className="bg-surface-container-low py-24 bg-(--surface-container-high) relative ">
             <div className="max-w-7xl mx-auto px-8">
                 <div className="text-center mb-16 space-y-4">
                     <h2 className="text-3xl lg:text-4xl font-bold tracking-tight font-['Manrope']">

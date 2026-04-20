@@ -1,20 +1,18 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { iconMap } from "@/utils/icons";
-import { Category, CategoryClientProps } from "@/types/categories";
+import { Category } from "@/types/categories";
 import { useRouter, useSearchParams } from "next/navigation";
 import IconDynamic from "@/components/UI/icon/icon"
+import { useApp } from "@/context/AppContext";
 
 function NavLinks({ onClose, categories }: { onClose?: () => void; categories: Category[] }) {
   const router = useRouter();
-  useEffect(() => {
-    if (categories.length > 0) {
-      router.push(`/products?category=`);
-    }
-  }, []);
-
   const searchParams = useSearchParams();
-  const activeCategory = searchParams.get("category");
+
+
+
+  const activeCategory = new URLSearchParams(searchParams.toString()).get("category");
 
   return (
     <nav className="flex flex-col gap-1">
@@ -25,13 +23,14 @@ function NavLinks({ onClose, categories }: { onClose?: () => void; categories: C
             key={cat.documentId}
             data-value={cat.slug}
             onClick={() => {
-              router.push(`/products?category=${cat.slug}`);
+              router.push(`/productos?category=${cat.slug}`);
               onClose?.();
             }}
             className={`flex items-center gap-3 font-['Manrope'] px-6 py-4 font-bold border-r-4 hover:translate-x-1 transition-transform ease-in-out duration-300 text-sm uppercase tracking-widest ${isActive
               ? "bg-emerald-50 text-emerald-900 border-emerald-900"
               : "text-slate-600 hover:bg-slate-100 border-transparent"
               }`}
+
           >
             {cat.icons?.[0] && (
               <IconDynamic name={cat.icons[0].icon as keyof typeof iconMap} className="w-4 h-4" />
@@ -46,16 +45,22 @@ function NavLinks({ onClose, categories }: { onClose?: () => void; categories: C
 }
 
 
-export default function ShopSideBarClient({ categories }: CategoryClientProps) {
+export default function ShopSideBarClient() {
   const [open, setOpen] = useState(false);
+  const { categories } = useApp();
+  const safeCategories = categories?.data ?? [];
 
+  if (safeCategories.length == 0) {
+    return null;
+  }
+  
   return (
     <>
       <button
         onClick={() => setOpen(true)}
-        className="lg:hidden fixed bottom-6 right-6 z-50 bg-primary text-white p-4 rounded-full shadow-lg"
+        className="lg:hidden fixed bottom-6 right-6 z-50 bg-(--primary) text-white p-4 rounded-full shadow-lg"
       >
-        <IconDynamic name="bar" className="w-6 h-6" />
+        <IconDynamic name="bar" className="w-8 h-8" />
       </button>
 
       {open && (
@@ -72,15 +77,15 @@ export default function ShopSideBarClient({ categories }: CategoryClientProps) {
             <IconDynamic name="close" className="w-5 h-5 text-(--primary-container) cursor-pointer" />
           </button>
         </div>
-        <NavLinks categories={categories} onClose={() => setOpen(false)} />
+        <NavLinks categories={safeCategories} onClose={() => setOpen(false)} />
       </div>
 
-      <aside className="h-full w-64 fixed left-0 border-r border-slate-100 bg-slate-50 flex-col pt-30 pb-8 hidden lg:flex ">
+      <aside className="w-64 fixed left-0 border-r border-slate-100 bg-slate-50 flex-col pt-30 pb-8 hidden lg:flex position-absolute ">
         <div className="px-6 mb-8">
           <h3 className="font-['Manrope'] text-sm uppercase tracking-widest text-emerald-800 font-bold">Nuestras categorías</h3>
           <p className="text-[10px] text-slate-500 uppercase tracking-tighter">Maná de vida</p>
         </div>
-        <NavLinks categories={categories} />
+        <NavLinks categories={safeCategories} />
       </aside>
     </>
   );

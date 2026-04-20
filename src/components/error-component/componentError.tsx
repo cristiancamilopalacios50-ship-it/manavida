@@ -33,12 +33,13 @@ export const ComponentError = () => {
                             Protocol Error 503
                         </span>
                         <h1 className="text-4xl md:text-5xl font-extrabold text-on-surface font-headline tracking-tighter leading-none">
-                            Sincronización Interrumpida
+                             Pausa en la Sincronización
                         </h1>
                         <p className="text-lg text-on-surface-variant font-medium max-w-md text-[var(--on-secondary-container)]">
-                            Nuestros servidores de laboratorio no se encuentran disponibles
-                            temporalmente. El flujo de datos clínicos se ha pausado para
-                            mantenimiento.
+                           Estamos renovando nuestra conexión con la naturaleza. 
+      El sistema se encuentra en mantenimiento para ofrecerte 
+      una experiencia más fluida y orgánica. 
+      Vuelve en unos instantes y descubre lo mejor de la vida natural.
                         </p>
                     </div>
 

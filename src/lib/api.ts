@@ -1,8 +1,8 @@
 import { Category } from "@/types/categories";
 import { HomeHero, Product } from "@/types/home";
 import { StrapiResponse } from "@/types/strapi";
-import {GlobalSiteResponse} from "@/types/global";
-import {Benefits}from "@/types/benefits";
+import { GlobalSiteResponse } from "@/types/global";
+import { Benefits } from "@/types/benefits";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -34,7 +34,7 @@ export async function getFeatureSlider(): Promise<StrapiResponse<Product[]> | nu
 export async function getCategories(): Promise<StrapiResponse<Category[]> | null> {
   try {
     const res = await fetch(
-      `${API_URL}/api/categories?populate[icons]=true`
+      `${API_URL}/api/categories?populate[icons]=true&populate[image][fields][0]=url&populate[image][fields][1]=alternativeText`
     );
     if (!res.ok) throw new Error("Error fetching categories");
     return res.json();
@@ -47,8 +47,8 @@ export async function getCategories(): Promise<StrapiResponse<Category[]> | null
 export async function getProducts(): Promise<StrapiResponse<Product[]> | null> {
   try {
     const res = await fetch(
-      `${API_URL}/api/products?populate[categories][fields][0]=slug&populate[categories][fields][1]=name&populate[image][fields][0]=url&populate[buttonProduct][populate]=*&populate[presentationAndPrice][fields][0]=*`
-    );
+      `${API_URL}/api/products?populate[categories][fields][0]=slug&populate[categories][fields][1]=name&populate[image][fields][0]=url&populate[buttonProduct][populate]=*&populate[presentationAndPrice][fields][0]=*`,
+      { next: { revalidate: 300 }, });
     if (!res.ok) throw new Error("Error fetching products");
     return res.json();
   } catch (error) {
@@ -59,14 +59,16 @@ export async function getProducts(): Promise<StrapiResponse<Product[]> | null> {
 
 export async function getProductBySlug(slug: string): Promise<StrapiResponse<Product[]> | null> {
   try {
-  
+
     const res = await fetch(
       `${API_URL}/api/products?filters[sku][$eq]=${slug}&populate[image][fields][0]=url&populate[image][fields][1]=name&populate[image][fields][2]=alternativeText&populate[categories][fields][0]=name&populate[categories][fields][1]=slug&populate[compositionProd][fields][0]=*&populate[presentationAndPrice][fields][0]=*&populate[imageConsume][fields][0]=url&populate[imageConsume][fields][1]=name&populate[imageConsume][fields][2]=alternativeText&populate[consumeProd][fields][0]=*`
     );
-    
-    
+
+
     if (!res.ok) throw new Error("Error fetching product");
-    return res.json();
+    const data = await res.json();
+    return data;
+
   } catch (error) {
     console.error(error);
     return null;

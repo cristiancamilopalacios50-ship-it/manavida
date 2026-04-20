@@ -11,7 +11,7 @@ export default function ConsumeProductModule({ title, consumption, image }: { ti
                 <div className="order-2 lg:order-1 rounded-3xl overflow-hidden shadow-xl">
                     
                     
-                    {image.length > 0 && image.map((image, index) => (
+                    {image?.length > 0 && image.map((image, index) => (
                      
                             <Image key={index} unoptimized data-url={`${process.env.NEXT_PUBLIC_API_URL}${image.url}`} src={`${process.env.NEXT_PUBLIC_API_URL}${image.url}`} alt={image.alternativeText} className="w-full object-cover" height={500} width={500} />
                        

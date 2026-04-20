@@ -1,34 +1,34 @@
 
-import { ShoppingBagIcon } from '@heroicons/react/24/solid'
-import { ActiveLink } from '@/components/active-link/ActiveLink';
+
+import { ActiveLink } from '@/components/UI/active-link/ActiveLink';
 import Image from 'next/image';
 import Link from 'next/link';
-const navItems: { name: string; href: string }[] = [
-  { name: 'Productos', href: '/products' },
-  { name: 'Acerca de', href: '/about' },
-  { name: 'Contacto', href: '/contact' },
-];
-
-export const Navbar = () => {
+import { NavProps } from "@/types/global";
+import FilterModule from "@/components/filter/Filter";
+import   IconDynamic from "@/components/UI/icon/icon"
+export const Navbar = ({ items }: { items: NavProps[] }) => {
   return (
-<header className="fixed top-0 w-full z-50 bg-white backdrop-blur-md shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
-<div className="flex justify-around items-center px-6 h-23 w-full">
-<Link href="/">
-  <Image 
-  src="/logo-verde.svg" 
-  alt="Logo" 
-  width={120} 
-  height={80}
-   className="bg-white"
-/>
-</Link>
-{
-  navItems.map((item) => (
-  <ActiveLink key={item.href} path={item.href} text={item.name}  />
-  )) 
-  }
+    <header className="fixed top-0 w-full z-50 bg-white backdrop-blur-md shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
+      <div className="md:flex justify-around items-center md:px-6 h-30 md:h-23 w-full font-['Manrope']  ">
 
-</div>
-</header>
+        {
+          items.map((item) => (
+            <ActiveLink key={item.href} path={item.href} text={item.name} />
+          ))
+        }
+        <Link href="/">
+          <Image
+            src="/logo-verde.svg"
+            alt="Logo"
+            width={120}
+            height={80}
+            className="bg-white m-auto order-1 md:order-2 hidden md:block"
+          />
+     
+          <p className=" md:hidden text-center text-(--primary) px-3 py-2 text-sm font-medium hover:text-(--on-secondary-fixed) hover:underline flex justify-center"><IconDynamic name='house' className="md:w-4 md:h-4 w-6 h-4 mx-1"/> Inicio</p>
+        </Link>
+        <FilterModule />
+      </div>
+    </header>
   );
 };

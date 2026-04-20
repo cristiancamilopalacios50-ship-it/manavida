@@ -7,65 +7,50 @@ import Image from "next/image";
 import { buildImageUrl } from "@/utils/helperImg";
 import Button from "@/components/UI/button/button";
 import { formatPrice } from "@/utils/priceConvert";
-import * as HeroIcons from "@heroicons/react/24/outline";
+import IconDynamic from "../UI/icon/icon";
 
 export default function ProductsFeatureClient({ products }: ProductsFeatureClientProps) {
     return (
-        <Swiper
-            modules={[Navigation, Autoplay]}
-            spaceBetween={20}
-            slidesPerView={1}
-            autoplay={{ delay: 6000 }}
-            navigation
-            className="mySwiper overflow-hidden [&_.swiper-wrapper]:items-stretch [&_.swiper-slide]:h-auto"
-        >
-            {products.map((product) => (
-                <SwiperSlide key={product.id} className="h-auto">
-                    <section className="py-12 md:py-24 px-4 md:px-8 bg-surface pb-0">
-                        <div className="container mx-auto">
 
-                            <div className="flex items-center gap-4 mb-8 md:mb-16">
-                                <div className=" grow bg-outline-variant/30 h-px bg-(--primary)"></div>
-                                <h2 className="text-sm font-label font-black text-primary uppercase tracking-[0.3em] text-(--primary)">
-                                    Producto de la Semana
-                                </h2>
-                                <div className="grow bg-outline-variant/30 bg-(--primary) h-px"></div>
-                            </div>
+        <section className="pt-32 md:px-8 bg-surface relative w-full">
+            <div className="w-full mx-auto">
+                <div className="flex items-center gap-4 mb-16">
+                    <div className="h-px grow bg-(--primary)"></div>
+                    <h2 className="text-sm font-label text-(--primary) font-black text-primary uppercase tracking-[0.3em]">Producto de la Semana</h2>
+                    <div className="h-px grow bg-(--primary)"></div>
+                </div>
+                <div className="relative group relative">
 
-                            <div className="bg-surface-container-lowest rounded-[2rem] overflow-hidden
-                grid grid-cols-1 lg:grid-cols-2 shadow-2xl shadow-on-surface/5 ">
+                    <Swiper modules={[Navigation, Autoplay]}
+                        spaceBetween={0}
+                        slidesPerView={1}
+                        autoplay={{ delay: 6000 }}
+                        navigation={{
+                            nextEl: '.nextBtn',
+                            prevEl: '.prevBtn',
+                        }}
+                        loop={true}
+                        className="mx-0  mySwiper overflow-hidden [&_.swiper-wrapper]:items-stretch [&_.swiper-slide]:h-auto container ">
+                        <div className="nextBtn absolute right-2 top-1/2 z-50 cursor-pointer bg-white p-2 rounded-full shadow">
+                            <IconDynamic name="stepForward" className="text-(--primary)" />
+                        </div>
 
-                                {/* Imagen — PRIMERO en móvil, SEGUNDO en desktop */}
-                                <div className="relative h-64 sm:h-80 lg:h-auto lg:min-h-[420px]
-                    bg-surface-container-high overflow-hidden
-                    order-1 lg:order-2 ">
-                                    <div className=" absolute inset-0 bg-indigo-200/40"></div>
-                                    <Image
-                                        src={buildImageUrl(product.image[0].url)}
-                                        alt={product.title}
-                                        fill
-                                        priority
-                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                        unoptimized
-                                        className=" m-auto object-contain z-10 !max-h-[90%]  drop-shadow-[0_35px_35px_rgba(0,0,0,0.15)]"
-                                    />
-                                </div>
-
-                                {/* Texto — SEGUNDO en móvil, PRIMERO en desktop */}
-                                <div className="p-6 lg:p-20 flex flex-col justify-center order-1 lg:order-">
-                                    <div className="flex items-center gap-2 text-tertiary font-bold mb-3">
-                                       <HeroIcons.StarIcon className="w-4 h-4" />
-                                        <span className="text-xs uppercase tracking-widest">Best Seller #1</span>
-                                    </div>
-                                    <h3 className="text-2xl md:text-5xl font-headline font-bold text-on-surface mb-4">
-                                        {product.title}
-                                    </h3>
-                                    <p className="text-base md:text-xl text-on-surface-variant mb-6 leading-relaxed">
-                                        {product.description}
-                                    </p>
-                                    <div className="flex items-baseline gap-4 mb-8">
-                                   
-                                           {product.presentationAndPrice?.length ? (
+                        <div className="prevBtn absolute left-2 top-1/2 z-50 cursor-pointer bg-white p-2 rounded-full shadow">
+                            <IconDynamic name="stepBack" className="text-(--primary)" />
+                        </div>
+                        {products.map((product) => (
+                            <SwiperSlide key={product.id} className="h-auto overflow-hidden  bg-(--prymary) min-h-[600px]  rounded-md">
+                                <div className="grid grid-cols-1 md:grid-cols-2  overflow-hidde min-h-[600px] ">
+                                    <div className="p-12 md:p-20 flex flex-col justify-center ">
+                                        <div className="flex items-center gap-2 text-tertiary font-bold mb-4">
+                                            <span className="material-symbols-outlined text-lg">star</span>
+                                            <span className="text-xs uppercase tracking-widest">Best Seller #1</span>
+                                        </div>
+                                        <h3 className="text-4xl md:text-5xl font-headline font-bold text-on-surface mb-6">{product.title}</h3>
+                                        <p className="text-xl text-on-surface-variant mb-8 leading-relaxed">
+                                            {product.description}
+                                        </p>
+                                        {product.presentationAndPrice?.length ? (
                                             <span className="text-3xl md:text-5xl font-headline font-black text-on-surface">
                                                 <p className="text-sm font-normal">Desde </p>
                                                 {formatPrice(Math.min(...product.presentationAndPrice.map((p) => p.price ?? 0)))}
@@ -75,28 +60,48 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                                                 {product.price ? formatPrice(product.price) : ""}
                                             </span>
                                         )}
-                                    </div>
-                                    <div className="flex gap-4 w-fit">
-                                        {product.buttonProduct?.length > 0 &&
-                                            product.buttonProduct.map((button, index) => (
-                                                <Button
-                                                    key={index}
-                                                    title={button.name}
-                                                    href={button.link ? button.link : product.sku ?? undefined}
-                                                    icon={button.icon}
-                                                    bgColor={`var(--${button.colorButton})`}
-                                                    textColor={`var(--${button.textColor})`}
-                                                />
-                                            ))}
-                                    </div>
 
+                                        <div className="grid grid-cols-2 gap-4 w-fit mt-6">
+                                            {product.buttonProduct?.length > 0 &&
+                                                product.buttonProduct.map((button, index) => (
+                                                    <Button
+                                                        key={index}
+                                                        title={button.name}
+                                                        href={button.link ? button.link : product.sku ?? undefined}
+                                                        icon={button.icon}
+                                                        bgColor={`var(--${button.colorButton})`}
+                                                        textColor={`var(--${button.textColor})`}
+                                                    />
+                                                ))}
+                                        </div>
+                                    </div>
+                                    <div className="relative md:min-h-[600px] min-h-[450px] bg-surface-container-high">
+                                        <div className="absolute inset-0 bg-(--surface-container-high) from-primary/10 via-transparent to-transparent"></div>
+                                        <Image
+                                            src={buildImageUrl(product.image[0].url)}
+                                            alt={product.title}
+                                            fill
+                                            priority
+                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                            unoptimized
+                                            className=" m-auto object-contain z-10 !max-h-[90%] "
+                                        />
+                                    </div>
                                 </div>
+                            </SwiperSlide>
+                        ))}
 
-                            </div>
-                        </div>
-                    </section>
-                </SwiperSlide>
-            ))}
-        </Swiper>
+                    </Swiper >
+
+                </div>
+
+
+
+
+
+            </div>
+
+        </section >
+
     )
 }

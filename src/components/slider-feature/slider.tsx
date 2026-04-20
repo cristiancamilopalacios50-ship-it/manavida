@@ -1,13 +1,13 @@
 import { getFeatureSlider } from "@/lib/api";
 import { Suspense } from "react";
 import ProductsFeatureClient from "./sliderClient";
-import { ComponentError } from "../error-component/componentError";
+
 
 export default async function SliderHome() {
   const  result = await getFeatureSlider();
 
     if (!result) {
-        return <ComponentError />;
+        return null;
     }
   return (
     <Suspense fallback={<HeroSkeleton />}>
