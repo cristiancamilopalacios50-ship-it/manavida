@@ -17,7 +17,7 @@ export default function ProductsPage() {
         <ShopSideBarClient />
       </Suspense>
 
-      <main className="flex-1 lg:ml-64 px-6 md:px-12 py-12 bg-indigo-100/40 pt-40">
+      <main className="flex-1 lg:ml-64 px-6 md:px-12 py-12 bg-indigo-100/40 pt-30">
         <Suspense fallback={<Spinner/>}>
           <AllProducts />
         </Suspense>

@@ -20,10 +20,10 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                 </div>
                 <div className="relative group ">
 
-                    <Swiper modules={[Navigation]}
+                    <Swiper modules={[Navigation, Autoplay]}
                         spaceBetween={0}
                         slidesPerView={1}
-                        // autoplay={{ delay: 6000 }}
+                        autoplay={{ delay: 8000 }}
                         navigation={{
                             nextEl: '.nextBtn',
                             prevEl: '.prevBtn',

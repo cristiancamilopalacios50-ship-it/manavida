@@ -1,3 +1,6 @@
+import { iconMap } from "@/utils/icons";
+export type IconName = keyof typeof iconMap;
+
 export interface GlobalSiteResponse {
   siteName: string;
   siteImage:string;
@@ -22,6 +25,7 @@ export interface GlobalSiteResponse {
 export interface NavProps{
   href:string;
   name:string;
+  icon:IconName;
 }
 interface defaultSeoProps{
   metatitle:string;

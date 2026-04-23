@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Navbar } from "@/components";
+import { Navbar} from "@/components";
 import { getProducts, getGlobalSite, getCategories } from "@/lib/api";
 import { AppProvider } from "@/context/AppContext";
 import { Manrope } from "next/font/google";
@@ -11,7 +11,7 @@ import { cache } from "react";
 const getGlobalSiteCached = cache(getGlobalSite);
 
 const navItems: NavProps[] = [
-  { name: 'Nuestros Productos', href: '/productos' }
+  { name: 'Nuestros Productos', href: '/productos', icon: 'shoppingCart' },
 ];
 
 
@@ -74,7 +74,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={"bg-surface " + manrope.variable}>
         <AppProvider value={{ products, categories, globalSite }}>
-          <Navbar items={navItems} />
+          <Navbar items={navItems}  />
           {children}
           <FooterModule value={globalSite} navs={navItems} />
         </AppProvider>
