@@ -53,14 +53,14 @@ export default function NavbarClientModule({ items }: { items: NavProps[] }) {
                                         <IconDynamic name={page.icon} className="md:w-4 md:h-4 w-6 h-4 mx-1 m-1" /> {page.name}
                                     </Link> */}
                                     <div className="-m-2 p-2 font-medium text-(--primary) flex w-50">
-                                        <ActiveLink path={page.href} text={page.name} icon={page.icon} />
+                                        <ActiveLink path={page.href} text={page.name} icon={page.icon} onClick={() => setOpen(false)} />
                                     </div>
 
                                 </div>
                             ))}
                             <div className="flow-root">
                                 <div className="-m-2 p-2 font-medium text-(--primary) flex w-50">
-                                    <ActiveLink path="/" text="Inicio" icon="house" />
+                                    <ActiveLink path="/" text="Inicio" icon="house" onClick={() => setOpen(false)} />
                                 </div>
                             </div>
 
@@ -123,6 +123,7 @@ export default function NavbarClientModule({ items }: { items: NavProps[] }) {
                                     {items.map((page) => (
                                         <ActiveLink
                                             key={page.href} path={page.href} text={page.name} icon={page.icon}
+                                            
                                         >
                                         </ActiveLink>
                                     ))}

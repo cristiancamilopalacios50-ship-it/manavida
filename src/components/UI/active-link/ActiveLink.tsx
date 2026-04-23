@@ -8,9 +8,10 @@ interface Props {
   path: string;
   text?: string;
   icon?: string;
+   onClick?: () => void;
 }
 
-export const ActiveLink = ({ path, text, icon }: Props) => {
+export const ActiveLink = ({ path, text, icon, onClick  }: Props) => {
   const pathname = usePathname();
   const isActive = pathname === path;
 
@@ -23,6 +24,7 @@ export const ActiveLink = ({ path, text, icon }: Props) => {
           ? "text-(--primary) underline decoration-2 underline-offset-4"
           : "text-(--primary) hover:text-(--on-secondary-fixed) hover:underline"
       }`}
+      onClick={onClick}
     >
       <IconDynamic name={icon as keyof typeof iconMap} className="md:w-4 md:h-4 w-6 h-4 mx-1"/>
      {text}
