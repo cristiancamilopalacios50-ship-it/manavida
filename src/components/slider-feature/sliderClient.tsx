@@ -20,10 +20,10 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                 </div>
                 <div className="relative group ">
 
-                    <Swiper modules={[Navigation, Autoplay]}
+                    <Swiper modules={[Navigation]}
                         spaceBetween={0}
                         slidesPerView={1}
-                        autoplay={{ delay: 6000 }}
+                        // autoplay={{ delay: 6000 }}
                         navigation={{
                             nextEl: '.nextBtn',
                             prevEl: '.prevBtn',
@@ -40,8 +40,8 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                         {products.map((product) => (
                             <SwiperSlide key={product.id} className="h-auto overflow-hidden  bg-(--prymary) min-h-[600px]  rounded-md">
                                 <div className="grid grid-cols-1 md:grid-cols-2  overflow-hidde min-h-[600px] ">
-                                    <div className="p-12 md:p-20 flex flex-col justify-center ">
-                                        <div className="flex items-center gap-2 text-tertiary font-bold mb-4 text-(--primary)">
+                                    <div className="p-12 md:p-20 flex flex-col justify-center order-2 md:order-1">
+                                        <div className="flex items-center gap-2 text-tertiary font-bold mb-4 text-(--tertiary)">
                                             <span className="material-symbols-outlined text-lg"><IconDynamic name="star" /></span>
                                             {product.titleFeature && (
                                                 <span className="text-xs uppercase tracking-widest">{product.titleFeature}</span>
@@ -62,7 +62,7 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                                             </span>
                                         )}
 
-                                        <div className="grid grid-cols-2 gap-4 w-fit mt-6">
+                                        <div className="grid md:grid-cols-2 grid-cols-1 gap-4  w-full mt-6">
                                             {product.buttonProduct?.length > 0 &&
                                                 product.buttonProduct.map((button, index) => (
                                                     <Button
@@ -76,7 +76,7 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                                                 ))}
                                         </div>
                                     </div>
-                                    <div className="relative md:min-h-[600px] min-h-[450px] bg-surface-container-high">
+                                    <div className="relative md:min-h-[600px] min-h-[450px] bg-surface-container-high order-1 md:order-2">
                                         <div className="absolute inset-0 bg-(--surface-container-high) from-primary/10 via-transparent to-transparent"></div>
                                         <Image
                                             src={product.image.url}
