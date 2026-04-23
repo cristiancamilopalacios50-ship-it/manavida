@@ -70,8 +70,8 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                                                         title={button.name}
                                                         href={button.link ? button.link : product.sku ?? undefined}
                                                         icon={button.icon}
-                                                        bgColor={`var(--${button.colorButton})`}
-                                                        textColor={`var(--${button.textColor})`}
+                                                        bgColor={button.colorButton}
+                                                        colorText={button.textColor}
                                                     />
                                                 ))}
                                         </div>

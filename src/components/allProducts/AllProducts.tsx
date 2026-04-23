@@ -7,6 +7,7 @@ import Image from "next/image";
 import { formatPrice } from "@/utils/priceConvert";
 import Button from "../UI/button/button";
 import Pagination from "../UI/pagination/pagination";
+import { Suspense } from 'react'
 
 export default function AllProducts() {
   const { products, categories, globalSite } = useApp();
@@ -40,6 +41,7 @@ export default function AllProducts() {
   
 
   return (
+    
     <section>
       <header className="mb-16">
         <h2 className="text-5xl md:text-6xl font-['Manrope'] font-extrabold tracking-tighter text-primary mb-4 text-(--primary)">
