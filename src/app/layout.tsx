@@ -6,21 +6,56 @@ import { AppProvider } from "@/context/AppContext";
 import { Manrope } from "next/font/google";
 import FooterModule from "@/components/footer/footer";
 import { NavProps } from "@/types/global";
+import { cache } from "react";
+
+const getGlobalSiteCached = cache(getGlobalSite);
 
 const navItems: NavProps[] = [
   { name: 'Nuestros Productos', href: '/productos' }
 ];
 
-export const metadata: Metadata = {
-  title: "maná de vida",
-  description:
-    "suplementos naturales para tu bienestar y vitalidad. Descubre cómo nuestros productos pueden ayudarte a alcanzar una vida más saludable y equilibrada.",
-};
 
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
 });
+
+export async function generateMetadata(): Promise<Metadata> {
+  const globalSite = await getGlobalSiteCached();
+  const globalData = globalSite?.data;
+
+  return {
+    title: {
+      default: globalData?.siteName ?? "maná de vida",
+      template: `%s | ${globalData?.siteName ?? "maná de vida"}`,
+    },
+    description:
+      globalData?.siteDescription ??
+      "Suplementos naturales para tu bienestar y vitalidad. Descubre cómo mejorar tu salud de forma natural.",
+    openGraph: {
+      title: globalData?.siteName ?? "maná de vida",
+      description: globalData?.defaultSeo.metaDescription,
+      url: globalData?.urlSite ?? "https://tiendamanadevida.com",
+      siteName: globalData?.siteName,
+      images: globalData?.favicon?.url
+        ? [{ url: globalData.favicon.url }]
+        : [],
+      locale: "es_CO",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: globalData?.siteName ?? "maná de vida",
+      description: globalData?.siteDescription,
+      images: globalData?.favicon?.url
+        ? [globalData.favicon.url]
+        : [],
+    },
+    metadataBase: new URL(
+      globalData?.urlSite ?? "https://tiendamanadevida.com"
+    ),
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -28,10 +63,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
 
-  const products = await getProducts();
-  const categories = await getCategories();
-  const globalSite = await getGlobalSite();
 
+  const [products, categories, globalSite] = await Promise.all([
+    getProducts(),
+    getCategories(),
+    getGlobalSite()
+  ]);
 
   return (
     <html lang="en">
@@ -39,10 +76,10 @@ export default async function RootLayout({
         <AppProvider value={{ products, categories, globalSite }}>
           <Navbar items={navItems} />
           {children}
-          <FooterModule value={globalSite} navs={navItems}/>
+          <FooterModule value={globalSite} navs={navItems} />
         </AppProvider>
-       
-        
+
+
       </body>
     </html>
   );

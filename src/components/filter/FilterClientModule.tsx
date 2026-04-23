@@ -7,7 +7,7 @@ import { Product } from "@/types/home";
 import { useApp } from "@/context/AppContext";
 import { formatPrice } from "@/utils/priceConvert";
 import IconDynamic from "../UI/icon/icon";
-import { buildImageUrl } from "@/utils/helperImg";
+
 
 function ResultItem({ result }: { result: Product }) {
     return (
@@ -20,7 +20,7 @@ function ResultItem({ result }: { result: Product }) {
                 <div className="w-12 h-12 bg-surface-container flex-shrink-0 overflow-hidden mr-4 relative border border-outline-variant/20">
                     
                         <Image
-                            src={buildImageUrl(result.image[0].url)}
+                            src={result.image.url}
                             alt={result.title}
                             fill
                             className="object-cover"
@@ -35,7 +35,7 @@ function ResultItem({ result }: { result: Product }) {
                     <h4 className="font-headline font-bold text-on-surface uppercase text-sm truncate">
                         {result.title}
                     </h4>
-                    <p className="font-body text-xs text-on-surface-variant mt-0.5">descripcion</p>
+                    <p className="font-body text-xs text-on-surface-variant mt-0.5 truncate">{result.description}</p>
                 </div>
 
                 {/* Right side */}

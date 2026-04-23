@@ -21,7 +21,7 @@ import {
     X,Search,MoveRight,StepForward,StepBack,
     ShoppingBasket,
     ShoppingCart,
-    House
+    House, Star,Rose,GrapeIcon,RulerIcon,Laugh,Bone
   
 } from "lucide-react";
 
@@ -37,6 +37,7 @@ export const healthIcons = {
     thermometer: Thermometer,
     shield: Shield,
     shieldCheck: ShieldCheck,
+    laugh:Laugh
 };
 
 export const chemistryIcons = {
@@ -65,7 +66,11 @@ export const fitnessIcons = {
     ruler: Ruler,
     zap: Zap,
     strong:BicepsFlexed,
-    pillBottle:PillBottle
+    pillBottle:PillBottle,
+    rose:Rose,
+    grape:GrapeIcon,
+    rule:RulerIcon,
+    bone:Bone
 };
 
 export const natureIcons = {
@@ -131,7 +136,8 @@ export const cartIcons = {
  stepBack:StepBack,
  shoppingBasket:ShoppingBasket,
  shoppingCart:ShoppingCart,
- house:House
+ house:House,
+ star:Star
 };
 
 export const iconMap = {

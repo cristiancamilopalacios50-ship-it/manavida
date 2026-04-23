@@ -1,7 +1,7 @@
 import { ConsumeProd, StrapiImage } from '@/types/home';
 import Image from 'next/image';
 
-export default function ConsumeProductModule({ title, consumption, image }: { title: string, consumption: ConsumeProd[], image: StrapiImage[] }) {
+export default function ConsumeProductModule({ title, consumption, image }: { title: string, consumption: ConsumeProd[], image: StrapiImage }) {
    
     
     return (
@@ -11,11 +11,11 @@ export default function ConsumeProductModule({ title, consumption, image }: { ti
                 <div className="order-2 lg:order-1 rounded-3xl overflow-hidden shadow-xl">
                     
                     
-                    {image?.length > 0 && image.map((image, index) => (
+                   
                      
-                            <Image key={index} unoptimized data-url={`${process.env.NEXT_PUBLIC_API_URL}${image.url}`} src={`${process.env.NEXT_PUBLIC_API_URL}${image.url}`} alt={image.alternativeText} className="w-full object-cover" height={500} width={500} />
+                            <Image   data-url={image.url} src={image.url} alt={image.alternativeText} className="w-full object-cover" height={500} width={500} />
                        
-                    ))}
+              
 
                 </div>
 
@@ -25,9 +25,9 @@ export default function ConsumeProductModule({ title, consumption, image }: { ti
                         {consumption.length > 0 && consumption.map((item, index) => (
                             
                             <div className="flex gap-6" key={index}>
-                                <div className="text-4xl font-light ">{index + 1}</div>
+                                {item.title || item.description ? <div className="text-4xl font-light ">{index + 1}</div> : null}
                                 <div>
-                                    <h4 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h4>
+                                    {item.title &&<h4 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h4>}
                                     <p className="text-slate-600">{item.description}</p>
                                 </div>
                             </div>

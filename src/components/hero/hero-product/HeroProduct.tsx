@@ -8,12 +8,15 @@ import Button from "@/components/UI/button/button";
 import IconDynamic from "@/components/UI/icon/icon"
 import { PresentationAndPrice, StrapiImage } from "@/types/home"
 import { useApp } from "@/context/AppContext";
-export default function ProductHero({ title, description, categories, saving, laboratory, priceAndPresentations, image }: { title: string, description: string, price: number, image: StrapiImage[], categories: Category[], saving?: number, laboratory?: string, priceAndPresentations: PresentationAndPrice[] }) {
+export default function ProductHero({ title, description, categories, saving, laboratory, priceAndPresentations, image }: { title: string, description: string, price: number, image: StrapiImage, categories: Category[], saving?: number, laboratory?: string, priceAndPresentations: PresentationAndPrice[] }) {
   const [selected, setSelected] = useState(0);
-
+  const [selectedItem, setSelectedItem] = useState(priceAndPresentations[0]);
   const { globalSite } = useApp();
 
-  const { whatsappBtnText, fieldText } = globalSite?.data ?? {};
+  const { whatsappBtnText, fieldText, whatsappNumber } = globalSite?.data ?? {};
+
+
+
 
   return (
     <section className="mb-20 relative bg-white max-w-7xl mx-auto px-8 pb-16 mt-20 lg:pb-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center bg-surface-container rounded-3xl shadow-lg">
@@ -23,12 +26,13 @@ export default function ProductHero({ title, description, categories, saving, la
         <div className="absolute inset-0 bg-(--surface-container-high) rounded-3xl -rotate-2 scale-105 group-hover:rotate-0 transition-transform duration-700" />
         <div className="relative bg-white rounded-3xl p-8 lg:p-12 overflow-hidden shadow-sm">
 
-          {image.length > 0 && image.map((image, index) => (
 
-            <Image key={index} unoptimized src={`${process.env.NEXT_PUBLIC_API_URL}${image.url}`} alt={image.alternativeText} className="w-full h-auto object-contain hover:scale-105 transition-transform duration-700" width={600}
-              height={600} />
 
-          ))}
+          <Image src={image.url} alt={image.alternativeText} className="w-full h-auto object-contain hover:scale-105 transition-transform duration-700" 
+          width={300}
+            height={300} />
+
+
 
         </div>
         {/* Badges */}
@@ -89,9 +93,12 @@ export default function ProductHero({ title, description, categories, saving, la
                   className="sr-only"
                   name="presentation"
                   type="radio"
-                  value={index}
+                  value={item.presentation}
                   checked={selected === index}
-                  onChange={() => setSelected(index)}
+                  onChange={() => {
+                    setSelected(index);
+                    setSelectedItem(item);
+                  }}
                 />
                 <div className="flex w-full items-center justify-between">
                   <div className="text-sm">
@@ -115,16 +122,16 @@ export default function ProductHero({ title, description, categories, saving, la
           </div>
         </div>
         {/* Info extra */}
-        <div className="grid grid-cols-2 gap-4 pt-4">
+        <div className="grid md:grid-cols-2 gap-4 pt-4">
           <div className="items-center gap-2 text-sm text-on-surface-variant block text-center">
 
             <Button
-              title={whatsappBtnText}
-              href="https://wa.me/1234567890"
+         title={whatsappBtnText}
+  href={`https://wa.me/${whatsappNumber}?text=Hola, quiero comprar ${title} de ${selectedItem.presentation} por ${formatPrice(selectedItem.price)}`}
 
             />
           </div>
-          <div className="flex items-center gap-2 text-sm text-on-surface-variant text-(--primary)">
+          <div className="m-auto md:ml-0 flex items-center gap-2 text-sm text-on-surface-variant text-(--primary)">
             <IconDynamic name="truck" className="text-primary text-lg" />
             Envío Gratis
           </div>

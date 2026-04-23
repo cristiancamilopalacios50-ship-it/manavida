@@ -15,9 +15,9 @@ export default function FooterModule({ value, navs }: { value: StrapiResponse<Gl
         return null;
     }
     return (
-        <footer className="bg-slate-200 w-full font-['Manrope'] z-60 sticky top-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-7 px-12 py-16 max-w-7xl mx-auto md:mx-0 md:ml-auto lg:mx-auto">
-                <div className="space-y-6">
+        <footer className="bg-slate-200 w-full font-['Manrope'] z-10 sticky top-0">
+            <div className="  grid sm:grid-cols-2 md:grid-cols-4  lg:grid-cols-4 gap-7 px-12 py-16 max-w-7xl mx-auto md:mx-0 md:ml-auto lg:mx-auto">
+                <div className="space-y-6 sm:col-start-1 md:col-start-2 lg:col-start-2 ">
                     <div className="text-lg font-black text-teal-950 uppercase tracking-widest">{data?.siteName}</div>
                     <p className="text-slate-500 max-w-sm font-['Manrope'] text-sm">{data?.siteDescription}</p>
                     <div className="flex gap-4">

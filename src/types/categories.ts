@@ -5,7 +5,7 @@ export interface Category {
     slug: string,
     description?: string,
     icons?:IconProps[],
-    image:StrapiImage[],
+    image:StrapiImage,
     descriptionShort:string
 }
 

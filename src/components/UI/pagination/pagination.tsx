@@ -32,7 +32,7 @@ export default function Pagination({
             href={`?${params.toString()}`}
             className={`px-4 py-2 rounded font-bold ${
               currentPage === pageNumber
-                ? "bg-primary text-white"
+                ? "bg-(--primary) text-white"
                 : "bg-gray-200 text-black"
             }`}
           >

@@ -8,12 +8,12 @@ export default function Button({
   href,
   icon,
   bgColor = "var(--primary)",
-  textColor = "var(--on-primary)",
+  colorText = "var(--on-primary)",
   onClick,
 }: ButtonProps) {
-  const styles = {
-    backgroundColor: bgColor,
-    color: textColor,
+ const styles = {
+    backgroundColor: bgColor ?? "var(--primary)",
+    color: colorText ?? "var(--on-primary)",
   };
 
   const base = "px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all active:scale-95 hover:opacity-90 cursor-pointer";

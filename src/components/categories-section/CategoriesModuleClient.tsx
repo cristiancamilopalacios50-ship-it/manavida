@@ -1,7 +1,6 @@
 
 "use client"
 import { useApp } from "@/context/AppContext";
-import { buildImageUrl } from "@/utils/helperImg";
 import Image from "next/image";
 import IconDynamic from "../UI/icon/icon";
 import Link from "next/link";
@@ -33,11 +32,11 @@ export default function CategoriesModule() {
                                 <Link key={index} href={`productos?category=${obj.slug}`} className="md:col-span-2 group relative h-90 rounded-3xl overflow-hidden bg-primary cursor-pointer">
                                       <div  >
 
-                                    {obj.image?.length > 0 && (
+                                    {obj.image.url && (
                                         <Image
-                                            alt={obj.image[0].alternativeText}
+                                            alt={obj.image.alternativeText}
                                             className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
-                                            src={buildImageUrl(obj.image?.[0]?.url)}
+                                            src={obj.image.url}
                                             width={600}
                                             height={270}
                                             unoptimized
@@ -65,11 +64,11 @@ export default function CategoriesModule() {
                             <Link key={index} href={`productos?category=${obj.slug}`}>
                                 <div className="group relative rounded-3xl h-90 overflow-hidden bg-surface-container-highest cursor-pointer">
 
-                                    {obj.image?.length > 0 && (
+                                    {obj.image.url && (
                                         <Image
-                                            alt={obj.image[0].alternativeText}
+                                            alt={obj.image.alternativeText}
                                             className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700"
-                                            src={buildImageUrl(obj.image?.[0]?.url)}
+                                            src={obj.image.url}
                                             width={400}
                                             height={270}
                                             unoptimized

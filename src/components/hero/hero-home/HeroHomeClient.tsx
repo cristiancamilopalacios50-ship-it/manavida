@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { HeroHomeClientProps } from "@/types/home";
-import { buildImageUrl } from "@/utils/helperImg";
+
 
 export default function HeroHomeClient({ heroData }: HeroHomeClientProps) {
     const bgRef = useRef<HTMLDivElement>(null);
@@ -34,15 +34,15 @@ export default function HeroHomeClient({ heroData }: HeroHomeClientProps) {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const { Imagen, Titulo, Subtitulo } = heroData;
-    const bgImage = buildImageUrl(Imagen?.[0]?.url);
+    const { image, Titulo, Subtitulo } = heroData;
+
     
     return (
         <section className="relative min-h-screen w-full overflow-hidden">
             {/* Parallax Background */}
             <div ref={bgRef} className="absolute inset-0 w-full h-[120%]">
                 <Image
-                    src={bgImage}
+                    src={image.url}
                     alt={Titulo}
                     fill
                     priority
@@ -77,7 +77,7 @@ export default function HeroHomeClient({ heroData }: HeroHomeClientProps) {
                 className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
             >
                 <div className="flex flex-col items-center gap-2 text-white">
-                    <span className="text-xs text-muted-foreground">Scroll to explore</span>
+                    <span className="text-xs text-muted-foreground">Sigue bajando</span>
                     <div className="h-10 w-6 rounded-full border-2 border-muted-foreground/30 p-1">
                         <div className="h-2 w-1.5 animate-bounce rounded-full bg-accent mx-auto" />
                     </div>

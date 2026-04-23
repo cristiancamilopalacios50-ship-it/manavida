@@ -1,5 +1,6 @@
 export interface GlobalSiteResponse {
   siteName: string;
+  siteImage:string;
   siteDescription: string;
   categoryDescription: string;
   complementTextCategories: string;
@@ -14,8 +15,19 @@ export interface GlobalSiteResponse {
   messageSocialMedia:string;
   subjectSocialMedia:string;
   tyc:string;
+  defaultSeo:defaultSeoProps;
+  favicon:favicon;
+  urlSite:string;
 }
 export interface NavProps{
   href:string;
   name:string;
+}
+interface defaultSeoProps{
+  metatitle:string;
+  metaDescription:string;
+}
+interface favicon{
+  url:string;
+  alternativeText:string;
 }

@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Category } from "./categories";
+import { Benefits } from "./benefits";
 
 
 export interface HeroHomeClientProps {
@@ -15,7 +16,7 @@ export interface ProductsFeatureClientProps {
 export interface HomeHero {
   Titulo: string;
   Subtitulo: string;
-  Imagen: StrapiImage[];
+  image: StrapiImage;
 }
 
 export interface Product {
@@ -28,7 +29,7 @@ export interface Product {
   expire: boolean;
   presentations: string[] | null;
   price: number;
-  image: StrapiImage[];
+  image: StrapiImage;
   buttonProduct: StrapiButton[];
   saving?: number;
   laboratory?: string;
@@ -40,8 +41,12 @@ export interface Product {
   compositionProd: CompositionProduct[];
   presentationAndPrice: PresentationAndPrice[];
   titleConsume: string;
-  imageConsume: StrapiImage[];
+  imageConsume: StrapiImage;
   consumeProd: ConsumeProd[];
+  titleFeature?:string;
+  shortDescription?:string;
+  colorProduct:string;
+  benefits: Benefits[];
 }
 export interface PropsProduct {
   params: Promise<{ slug: string }>;

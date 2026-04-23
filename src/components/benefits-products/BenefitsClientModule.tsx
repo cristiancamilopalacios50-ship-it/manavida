@@ -8,12 +8,16 @@ export default function BenefitsClientModule({ benefits , description, title}: {
         <section className="bg-surface-container-low py-24 bg-(--surface-container-high) relative ">
             <div className="max-w-7xl mx-auto px-8">
                 <div className="text-center mb-16 space-y-4">
-                    <h2 className="text-3xl lg:text-4xl font-bold tracking-tight font-['Manrope']">
-                        {title}
-                    </h2>
-                    <p className="text-on-surface-variant max-w-2xl mx-auto">
-                  {description}
-                    </p>
+                    {title && (
+                        <h2 className="text-3xl lg:text-4xl font-bold tracking-tight font-['Manrope']">
+                            {title}
+                        </h2>
+                    )}
+                    { description && (
+                        <p className="text-on-surface-variant max-w-2xl mx-auto">
+                            {description}
+                        </p>
+                   )}
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

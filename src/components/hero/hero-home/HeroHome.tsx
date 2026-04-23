@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { ComponentError } from "@/components/error-component/componentError";
 export default async function HeroHome() {
     const result = await getHome();
+    
     if (!result) {
         return <ComponentError />;
     }

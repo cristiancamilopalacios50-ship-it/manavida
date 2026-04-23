@@ -15,7 +15,7 @@ function NavLinks({ onClose, categories }: { onClose?: () => void; categories: C
   const activeCategory = new URLSearchParams(searchParams.toString()).get("category");
 
   return (
-    <nav className="flex flex-col gap-1">
+    <nav className="flex-col gap-1 block h-[74vh] overflow-y-auto overflow-x-hidden">
       {categories.map((cat) => {
         const isActive = activeCategory === cat.slug;
         return (
@@ -26,7 +26,7 @@ function NavLinks({ onClose, categories }: { onClose?: () => void; categories: C
               router.push(`/productos?category=${cat.slug}`);
               onClose?.();
             }}
-            className={`flex items-center gap-3 font-['Manrope'] px-6 py-4 font-bold border-r-4 hover:translate-x-1 transition-transform ease-in-out duration-300 text-sm uppercase tracking-widest ${isActive
+            className={`w-full flex items-center text-left gap-3 font-['Manrope'] px-6 py-4 font-bold border-r-4 hover:translate-x-1 transition-transform ease-in-out duration-300 text-sm uppercase tracking-widest ${isActive
               ? "bg-emerald-50 text-emerald-900 border-emerald-900"
               : "text-slate-600 hover:bg-slate-100 border-transparent"
               }`}
@@ -64,7 +64,7 @@ export default function ShopSideBarClient() {
       </button>
 
       {open && (
-        <div className="lg:hidden fixed inset-0 bg-black/40 z-40" onClick={() => setOpen(false)} />
+        <div className="lg:hidden fixed inset-0 bg-black/40 z-50" onClick={() => setOpen(false)} />
       )}
 
       <div className={`lg:hidden fixed top-0 left-0 h-full w-72 bg-slate-50 z-50 transform transition-transform duration-300 ease-in-out ${open ? "translate-x-0" : "-translate-x-full"}`}>
@@ -80,7 +80,7 @@ export default function ShopSideBarClient() {
         <NavLinks categories={safeCategories} onClose={() => setOpen(false)} />
       </div>
 
-      <aside className="w-64 fixed left-0 border-r border-slate-100 bg-slate-50 flex-col pt-30 pb-8 hidden lg:flex position-absolute ">
+      <aside className="w-65 fixed left-0 h-[100vw] z-40 border-r border-slate-100 bg-slate-50 flex-col pt-30 pb-8 hidden lg:flex position-absolute ">
         <div className="px-6 mb-8">
           <h3 className="font-['Manrope'] text-sm uppercase tracking-widest text-emerald-800 font-bold">Nuestras categorías</h3>
           <p className="text-[10px] text-slate-500 uppercase tracking-tighter">Maná de vida</p>

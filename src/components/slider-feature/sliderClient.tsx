@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { ProductsFeatureClientProps } from "@/types/home";
 import Image from "next/image";
-import { buildImageUrl } from "@/utils/helperImg";
 import Button from "@/components/UI/button/button";
 import { formatPrice } from "@/utils/priceConvert";
 import IconDynamic from "../UI/icon/icon";
@@ -19,7 +18,7 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                     <h2 className="text-sm font-label text-(--primary) font-black text-primary uppercase tracking-[0.3em]">Producto de la Semana</h2>
                     <div className="h-px grow bg-(--primary)"></div>
                 </div>
-                <div className="relative group relative">
+                <div className="relative group ">
 
                     <Swiper modules={[Navigation, Autoplay]}
                         spaceBetween={0}
@@ -42,9 +41,11 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                             <SwiperSlide key={product.id} className="h-auto overflow-hidden  bg-(--prymary) min-h-[600px]  rounded-md">
                                 <div className="grid grid-cols-1 md:grid-cols-2  overflow-hidde min-h-[600px] ">
                                     <div className="p-12 md:p-20 flex flex-col justify-center ">
-                                        <div className="flex items-center gap-2 text-tertiary font-bold mb-4">
-                                            <span className="material-symbols-outlined text-lg">star</span>
-                                            <span className="text-xs uppercase tracking-widest">Best Seller #1</span>
+                                        <div className="flex items-center gap-2 text-tertiary font-bold mb-4 text-(--primary)">
+                                            <span className="material-symbols-outlined text-lg"><IconDynamic name="star" /></span>
+                                            {product.titleFeature && (
+                                                <span className="text-xs uppercase tracking-widest">{product.titleFeature}</span>
+                                            )}
                                         </div>
                                         <h3 className="text-4xl md:text-5xl font-headline font-bold text-on-surface mb-6">{product.title}</h3>
                                         <p className="text-xl text-on-surface-variant mb-8 leading-relaxed">
@@ -78,12 +79,12 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                                     <div className="relative md:min-h-[600px] min-h-[450px] bg-surface-container-high">
                                         <div className="absolute inset-0 bg-(--surface-container-high) from-primary/10 via-transparent to-transparent"></div>
                                         <Image
-                                            src={buildImageUrl(product.image[0].url)}
+                                            src={product.image.url}
                                             alt={product.title}
                                             fill
                                             priority
                                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                            unoptimized
+                                           
                                             className=" m-auto object-contain z-10 !max-h-[90%] "
                                         />
                                     </div>

@@ -14,7 +14,11 @@ export default function ProdCompositionModule({ product }: { product: Product })
                             <div key={index} className="group border-b border-primary font-['Manrope'] border-b-{--primary} p-6 hover:bg-surface-container-low transition-colors ">
                                 <div className="flex justify-between items-start mb-4">
                                     <h4 className="text-lg font-bold ">{item.name}</h4>
-                                    <span className="text-[10px] font-black tracking-widest uppercase bg-(--primary) text-white px-2 py-1 rounded">{item.composition}</span>
+                                    {item.composition && (
+                                        <span className="text-[10px] font-black tracking-widest uppercase bg-(--primary) text-white px-2 py-1 rounded">
+                                            {item.composition}
+                                        </span>
+                                    )}
                                 </div>
                                 <p className="text-sm text-on-surface-variant mb-4 leading-relaxed">{item.description}</p>
                             </div>
