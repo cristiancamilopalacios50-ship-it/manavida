@@ -84,7 +84,7 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                                             fill
                                             priority
                                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                           
+                                           style={{ backgroundColor: product.colorProduct }}
                                             className=" m-auto object-contain z-10 !max-h-[90%] "
                                         />
                                     </div>
