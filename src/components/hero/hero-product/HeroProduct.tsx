@@ -23,7 +23,7 @@ export default function ProductHero({ title, description, saving, laboratory, pr
       {/* Imagen */}
       <div className="relative group">
         <div className="absolute inset-0 bg-(--surface-container-high) rounded-3xl -rotate-2 scale-105 group-hover:rotate-0 transition-transform duration-700" />
-        <div className="relative bg-white rounded-3xl p-8 lg:p-12 overflow-hidden shadow-sm" style={{ backgroundColor: color }}>
+        <div className="relative bg-white rounded-3xl p-8 lg:p-12 overflow-hidden shadow-sm w-80 m-auto" style={{ backgroundColor: color }}>
 
 
 

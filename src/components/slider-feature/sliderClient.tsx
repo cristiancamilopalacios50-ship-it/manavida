@@ -23,7 +23,9 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                     <Swiper modules={[Navigation, Autoplay]}
                         spaceBetween={0}
                         slidesPerView={1}
-                        autoplay={{ delay: 8000 }}
+                        // autoplay={{ delay: 8000 }}
+                        autoHeight={false}
+                        style={{ height: "100%" }}
                         navigation={{
                             nextEl: '.nextBtn',
                             prevEl: '.prevBtn',
@@ -38,8 +40,8 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                             <IconDynamic name="stepBack" className="text-(--primary)" />
                         </div>
                         {products.map((product) => (
-                            <SwiperSlide key={product.id} className="h-auto overflow-hidden  bg-(--prymary) min-h-[600px]  rounded-md">
-                                <div className="grid grid-cols-1 md:grid-cols-2  overflow-hidde min-h-[600px] ">
+                            <SwiperSlide key={product.id} className="!h-auto overflow-hidden  bg-(--prymary) min-h-[600px]  rounded-md">
+                                <div className="grid grid-cols-1 md:grid-cols-2  overflow-hidde h-full min-h-[600px] ">
                                     <div className="p-12 md:p-20 flex flex-col justify-center order-2 md:order-1">
                                         <div className="flex items-center gap-2 text-tertiary font-bold mb-4 text-(--tertiary)">
                                             <span className="material-symbols-outlined text-lg"><IconDynamic name="star" /></span>
@@ -83,9 +85,9 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                                             alt={product.title}
                                             fill
                                             priority
-                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                           style={{ backgroundColor: product.colorProduct }}
-                                            className=" m-auto object-contain z-10 !max-h-[90%] "
+                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw "
+                                            style={{ backgroundColor: product.colorProduct }}
+                                            className=" m-auto object-contain z-10 !max-h-[90%] md:!w-100 "
                                         />
                                     </div>
                                 </div>

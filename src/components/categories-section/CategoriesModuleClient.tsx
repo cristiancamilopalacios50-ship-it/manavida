@@ -16,7 +16,7 @@ export default function CategoriesModule() {
 
 
     return (
-        <section className="py-32 px-8 bg-surface-container-low w-full relative" >
+        <section className="py-32 px-8 bg-surface-container-low w-full relative pt-20" >
             <div className="container mx-auto">
                 <div className="max-w-2xl mb-16">
                     <h2 className="text-4xl font-['Manrope'] font-extrabold text-on-surface mb-4 text-(--primary)">Optimiza por Objetivo</h2>
