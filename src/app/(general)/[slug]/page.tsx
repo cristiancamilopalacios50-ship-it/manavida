@@ -65,8 +65,8 @@ export default async function ProductPage({ params }: PropsProduct) {
     <div className="pt-20 bg-(--background)">
       <ProductHero
         {...item}
-        categories={item.categories || []}
         priceAndPresentations={item.presentationAndPrice || []}
+        color={item.colorProduct}
       />
 
       {item.benefits?.length && <BenefitsClientModule benefits={item.benefits || []} title={titleBenefits} description={descBenefits} />}

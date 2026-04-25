@@ -118,7 +118,7 @@ export default function NavbarClientModule({ items }: { items: NavProps[] }) {
 
 
                             {/* Flyout menus */}
-                            <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch">
+                            <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch ml-auto my-auto">
                                 <div className="flex h-full space-x-8 items-center">
                                     {items.map((page) => (
                                         <ActiveLink

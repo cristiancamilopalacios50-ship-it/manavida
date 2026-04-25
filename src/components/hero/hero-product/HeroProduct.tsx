@@ -2,13 +2,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import * as HeroIcons from "@heroicons/react/24/solid";
-import { Category } from "@/types/categories";
 import { formatPrice } from "@/utils/priceConvert";
 import Button from "@/components/UI/button/button";
 import IconDynamic from "@/components/UI/icon/icon"
 import { PresentationAndPrice, StrapiImage } from "@/types/home"
 import { useApp } from "@/context/AppContext";
-export default function ProductHero({ title, description, categories, saving, laboratory, priceAndPresentations, image }: { title: string, description: string, price: number, image: StrapiImage, categories: Category[], saving?: number, laboratory?: string, priceAndPresentations: PresentationAndPrice[] }) {
+export default function ProductHero({ title, description, saving, laboratory, priceAndPresentations, image, color }: { title: string, description: string, price: number, image: StrapiImage, saving?: number, laboratory?: string, priceAndPresentations: PresentationAndPrice[], color?: string }) {
   const [selected, setSelected] = useState(0);
   const [selectedItem, setSelectedItem] = useState(priceAndPresentations[0]);
   const { globalSite } = useApp();
@@ -24,13 +23,13 @@ export default function ProductHero({ title, description, categories, saving, la
       {/* Imagen */}
       <div className="relative group">
         <div className="absolute inset-0 bg-(--surface-container-high) rounded-3xl -rotate-2 scale-105 group-hover:rotate-0 transition-transform duration-700" />
-        <div className="relative bg-white rounded-3xl p-8 lg:p-12 overflow-hidden shadow-sm">
+        <div className="relative bg-white rounded-3xl p-8 lg:p-12 overflow-hidden shadow-sm" style={{ backgroundColor: color }}>
 
 
 
           <Image src={image.url} alt={image.alternativeText} className="w-full h-auto object-contain hover:scale-105 transition-transform duration-700" 
-          width={300}
-            height={300} />
+          width={500}
+            height={500} />
 
 
 
@@ -54,14 +53,14 @@ export default function ProductHero({ title, description, categories, saving, la
       <div className="space-y-8">
         <div className="space-y-2">
 
-          {
+          {/* {
             categories.map((cat) => (
               <div key={cat.slug} className="font-['Manrope'] text-(--on-tertiary-fixed-variant) bg-(--tertiary-fixed) inline-flex items-center px-3 py-1 bg-tertiary-container/10 text-tertiary-container rounded-full text-xs font-bold tracking-widest uppercase">
                 {cat.name}
               </div>
             ))
 
-          }
+          } */}
           <h1 className="text-5xl lg:text-6xl font-extrabold tracking-tighter text-on-surface font-headline">
             {title}
           </h1>
@@ -133,7 +132,7 @@ export default function ProductHero({ title, description, categories, saving, la
           </div>
           <div className="m-auto md:ml-0 flex items-center gap-2 text-sm text-on-surface-variant text-(--primary)">
             <IconDynamic name="truck" className="text-primary text-lg" />
-            Envío Gratis
+            Consulta tu envío
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ export default async function Page() {
     <div className="flex flex-col items-center">
       <HeroHome />
       <SliderHome />
-<CategoriesModule/>
+      <CategoriesModule />
     </div>
 
   );

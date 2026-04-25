@@ -65,13 +65,13 @@ export default function AllProducts() {
               <Image
                 alt={product.title}
                 className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 cursor-pointer"
-                src={product.image.url}
+                src={product.image?.url || "/logo.png" }
                 fill
                 priority
-                unoptimized
+                
               />
 
-              <div className="absolute top-4 right-4 flex flex-col gap-2">
+              {/* <div className="absolute top-4 right-4 flex flex-col gap-2">
                 {product.categories?.map((cat) => (
                   <span 
                     key={cat.documentId}
@@ -80,7 +80,7 @@ export default function AllProducts() {
                     {cat.name}
                   </span>
                 ))}
-              </div>
+              </div> */}
             </div>
 
             <div className="p-8 flex flex-col flex-1 bg-white">

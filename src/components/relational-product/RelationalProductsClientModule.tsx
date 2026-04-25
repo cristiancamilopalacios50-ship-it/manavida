@@ -61,7 +61,7 @@ export default function RelationalProductsClientModule({ productWithslug }: { pr
                                     <Link href={item.sku ? item.sku : ""}>
                                         <div className="group" key={index}>
                                             <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                                                <Image key={index} src={item.image.url} alt={item.image.alternativeText ? item.image.alternativeText : item.title}  width={400} height={400} className="w-full h-full object-center object-cover group-hover:opacity-75" />
+                                                <Image key={index} src={item.image?.url || "/logo.png"} alt={item.image?.alternativeText ? item.image.alternativeText : item.title}  width={400} height={400} className="w-full h-full object-center object-cover group-hover:opacity-75" />
                                             </div>
                                             <h3 className="mt-4 text-sm text-gray-700 font-medium">{item.title}</h3>
                                             <p className="mt-1 text-sm font-bold text-gray-900">   {formatPrice(
