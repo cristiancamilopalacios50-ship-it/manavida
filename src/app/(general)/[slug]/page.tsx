@@ -55,6 +55,7 @@ export default async function ProductPage({ params }: PropsProduct) {
 
   const products = product.data;
   const item = products[0];
+console.log(product.data);
 
 
   const { titleBenefits, descBenefits } = item;

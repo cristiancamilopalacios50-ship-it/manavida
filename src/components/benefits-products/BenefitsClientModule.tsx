@@ -20,7 +20,7 @@ export default function BenefitsClientModule({ benefits , description, title}: {
                    )}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 [&>*:last-child:nth-child(3n+1)]:md:col-start-2">
                     {benefits.map((item, index) => (
                         <div
                             key={index}

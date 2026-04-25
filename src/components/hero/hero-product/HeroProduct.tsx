@@ -18,7 +18,7 @@ export default function ProductHero({ title, description, saving, laboratory, pr
 
 
   return (
-    <section className="mb-20 relative bg-white max-w-7xl mx-auto px-8 pb-16 mt-20 lg:pb-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center bg-surface-container rounded-3xl shadow-lg">
+    <section className="mb-20 relative bg-white max-w-7xl mx-auto px-8 pb-16 mt-20  grid grid-cols-1 lg:grid-cols-2 gap-16 items-center bg-surface-container rounded-3xl shadow-lg">
 
       {/* Imagen */}
       <div className="relative group">
@@ -27,7 +27,7 @@ export default function ProductHero({ title, description, saving, laboratory, pr
 
 
 
-          <Image src={image.url} alt={image.alternativeText} className="w-full h-auto object-contain hover:scale-105 transition-transform duration-700" 
+          <Image src={image?.url || '/logo.png'} alt={image?.alternativeText || 'mana de vida'} className="w-full h-auto object-contain hover:scale-105 transition-transform duration-700" 
           width={500}
             height={500} />
 
@@ -50,7 +50,7 @@ export default function ProductHero({ title, description, saving, laboratory, pr
       </div>
 
       {/* Detalles */}
-      <div className="space-y-8">
+      <div className="space-y-8 mt-10">
         <div className="space-y-2">
 
           {/* {

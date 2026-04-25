@@ -13,7 +13,7 @@ export default function ConsumeProductModule({ title, consumption, image }: { ti
                     
                    
                      
-                            <Image   data-url={image.url} src={image.url} alt={image.alternativeText} className="w-full object-cover" height={500} width={500} />
+                            <Image   src={image?.url || '/logo.png'} alt={image?.alternativeText || 'mana de vida'} className="w-full object-cover" height={500} width={500} />
                        
               
 
