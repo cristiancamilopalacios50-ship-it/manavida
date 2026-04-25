@@ -20,7 +20,7 @@ function ResultItem({ result }: { result: Product }) {
                 <div className="w-12 h-12 bg-surface-container flex-shrink-0 overflow-hidden mr-4 relative border border-outline-variant/20">
                     
                         <Image
-                            src={result.image.url}
+                            src={result.image?.url || "/logo.png"}
                             alt={result.title}
                             fill
                             className="object-cover"
