@@ -30,33 +30,33 @@ export default function CategoriesModule() {
                         if (index % 3 === 0) {
                             return (
                                 <Link key={index} href={`productos?category=${obj.slug}`} className="md:col-span-2 group relative h-90 rounded-3xl overflow-hidden bg-primary cursor-pointer">
-                                      <div  >
+                                    <div  >
 
-                                    {obj.image.url && (
-                                        <Image
-                                            alt={obj.image.alternativeText}
-                                            className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
-                                            src={obj.image.url}
-                                            width={600}
-                                            height={270}
-                                            unoptimized
-                                            
-                                        />
-                                    )}
+                                        {obj.image.url && (
+                                            <Image
+                                                alt={obj.image.alternativeText}
+                                                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
+                                                src={obj.image.url}
+                                                width={600}
+                                                height={270}
+                                                unoptimized
 
-                                    <div className="absolute inset-0 bg-gradient-to-t from-(--primary)/80 to-transparent"></div>
+                                            />
+                                        )}
 
-                                    <div className="absolute bottom-8 left-8 font-['Manrope'] text-white">
-                                        <h3 className="text-3xl font-headline font-bold text-on-primary  mb-2">
-                                            {obj.name}
-                                        </h3>
-                                        <p className="text-sm ">
-                                            {obj.descriptionShort}
-                                        </p>
+                                        <div className="absolute inset-0 bg-gradient-to-t from-(--primary)/80 to-transparent "></div>
+
+                                        <div className="absolute bottom-8 left-8 font-['Manrope'] text-white">
+                                            <h3 className="text-3xl font-headline font-bold text-on-primary  mb-2">
+                                                {obj.name}
+                                            </h3>
+                                            <p className="text-sm ">
+                                                {obj.descriptionShort}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
                                 </Link>
-                              
+
                             );
                         }
 
@@ -64,22 +64,27 @@ export default function CategoriesModule() {
                             <Link key={index} href={`productos?category=${obj.slug}`}>
                                 <div className="group relative rounded-3xl h-90 overflow-hidden bg-surface-container-highest cursor-pointer">
 
+                                    <div className="absolute inset-0 bg-gradient-to-t from-(--on-secondary-fixed)/80 to-transparent z-10"></div>
                                     {obj.image.url && (
                                         <Image
                                             alt={obj.image.alternativeText}
-                                            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700"
+                                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                             src={obj.image.url}
                                             width={400}
                                             height={270}
                                             unoptimized
-                                            
+
                                         />
                                     )}
 
-                                    <div className="absolute bottom-8 left-8 text-(--primary)">
+                                    <div className="absolute bottom-8 left-8 text-(--surface-container-lowest) z-20 top-55">
+
                                         <h4 className="text-2xl font-headline font-bold text-on-surface mb-1 text-['Manrope']">
                                             {obj.name}
                                         </h4>
+                                        <p className="text-sm ">
+                                            {obj.descriptionShort}
+                                        </p>
                                         <span className="material-symbols-outlined ">
                                             <IconDynamic name="moveRight" />
                                         </span>

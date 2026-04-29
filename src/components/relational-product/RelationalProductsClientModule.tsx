@@ -7,6 +7,7 @@ import { Autoplay, Navigation } from "swiper/modules";
 import Image from "next/image";
 import { formatPrice } from "@/utils/priceConvert";
 import Link from "next/link";
+import IconDynamic from "../UI/icon/icon";
 
 export default function RelationalProductsClientModule({ productWithslug }: { productWithslug: Product }) {
     const { products } = useApp();
@@ -38,7 +39,10 @@ export default function RelationalProductsClientModule({ productWithslug }: { pr
                             spaceBetween={20}
                             slidesPerView={5}
                             autoplay={{ delay: 6000 }}
-                            navigation
+                              navigation={{
+                            nextEl: '.nextBtn',
+                            prevEl: '.prevBtn',
+                        }}
                             className="mySwiper overflow-hidden [&_.swiper-wrapper]:items-stretch [&_.swiper-slide]:h-auto"
                             breakpoints={{
                                 320: {
@@ -57,10 +61,10 @@ export default function RelationalProductsClientModule({ productWithslug }: { pr
                         >
 
                             {filtered.length > 0 && filtered.map((item, index) => (
-                                <SwiperSlide key={index} className="h-auto ">
+                                <SwiperSlide key={index} className="h-auto " >
                                     <Link href={item.sku ? item.sku : ""}>
                                         <div className="group" key={index}>
-                                            <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
+                                            <div style={{ backgroundColor: item.colorProduct }} className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                                                 <Image key={index} src={item.image?.url || "/logo.png"} alt={item.image?.alternativeText ? item.image.alternativeText : item.title}  width={400} height={400} className="w-full h-full object-center object-cover group-hover:opacity-75" />
                                             </div>
                                             <h3 className="mt-4 text-sm text-gray-700 font-medium">{item.title}</h3>
@@ -74,7 +78,15 @@ export default function RelationalProductsClientModule({ productWithslug }: { pr
                                         </div>
                                     </Link>
                                 </SwiperSlide>
+                                
                             ))}
+                            <div className="nextBtn absolute right-2 top-1/2 z-50 cursor-pointer bg-white p-2 rounded-full shadow [&.swiper-button-disabled]:hidden">
+                                                        <IconDynamic name="stepForward" className="text-(--primary)" />
+                                                    </div>
+                            
+                                                    <div className="prevBtn absolute left-2 top-1/2 z-50 cursor-pointer bg-white p-2 rounded-full shadow [&.swiper-button-disabled]:hidden">
+                                                        <IconDynamic name="stepBack" className="text-(--primary)" />
+                                                    </div>
                         </Swiper>
 
                     </div>

@@ -40,9 +40,9 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                             <IconDynamic name="stepBack" className="text-(--primary)" />
                         </div>
                         {products.map((product) => (
-                            <SwiperSlide key={product.id} className="!h-auto overflow-hidden  bg-(--prymary) min-h-[600px]  rounded-md">
-                                <div className="grid grid-cols-1 md:grid-cols-2  overflow-hidde h-full min-h-[600px] ">
-                                    <div className="p-12 md:p-20 flex flex-col justify-center order-2 md:order-1">
+                            <SwiperSlide key={product.id} className="overflow-hidden rounded-md h-auto">
+                                <div className="grid grid-cols-1 md:grid-cols-2 md:h-[600px] ">
+                                    <div className="p-12 md:px-20 md:py-10 flex flex-col justify-center order-2 md:order-1">
                                         <div className="flex items-center gap-2 text-tertiary font-bold mb-4 text-(--tertiary)">
                                             <span className="material-symbols-outlined text-lg"><IconDynamic name="star" /></span>
                                             {product.titleFeature && (
@@ -78,18 +78,16 @@ export default function ProductsFeatureClient({ products }: ProductsFeatureClien
                                                 ))}
                                         </div>
                                     </div>
-                                    <div className="relative md:min-h-[600px] min-h-[450px] bg-surface-container-high order-1 md:order-2">
-                                        <div className="absolute inset-0 bg-(--surface-container-high) from-primary/10 via-transparent to-transparent"></div>
-                                        <Image
-                                            src={product.image.url}
-                                            alt={product.title}
-                                            fill
-                                            priority
-                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw "
-                                            style={{ backgroundColor: product.colorProduct }}
-                                            className=" m-auto object-contain z-10 !max-h-[90%] md:!w-100 "
-                                        />
-                                    </div>
+<div className="h-[320px] md:h-full bg-surface-container-high order-1 md:order-2 flex items-end justify-center overflow-hidden" style={{ backgroundColor: product.colorProduct }}>
+    <Image
+        src={product.image.url}
+        alt={product.title}
+        width={500}
+        height={500}
+        priority
+     className="object-contain max-h-full w-auto h-auto top-0 md:absolute"
+    />
+</div>
                                 </div>
                             </SwiperSlide>
                         ))}
