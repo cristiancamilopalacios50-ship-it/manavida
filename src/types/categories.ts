@@ -1,4 +1,4 @@
-import {StrapiImage} from "./home"
+import {Product, StrapiImage} from "./home"
 export interface Category {
     documentId: string,
     name: string,
@@ -6,7 +6,8 @@ export interface Category {
     description?: string,
     icons?:IconProps[],
     image:StrapiImage,
-    descriptionShort:string
+    descriptionShort:string,
+    products:Product[]
 }
 
 export interface CategoryClientProps{

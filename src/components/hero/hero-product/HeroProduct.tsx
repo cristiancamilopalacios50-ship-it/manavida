@@ -18,7 +18,7 @@ export default function ProductHero({ title, description, saving, laboratory, pr
 
 
   return (
-    <section className="mb-20 relative bg-white max-w-7xl mx-auto px-8 pb-16 mt-20  grid grid-cols-1 lg:grid-cols-2 gap-16 items-center bg-surface-container rounded-3xl shadow-lg">
+    <section className="mb-20 relative bg-white max-w-7xl mx-auto px-8 py-10 mt-20  grid grid-cols-1 lg:grid-cols-2 gap-16 items-center bg-surface-container rounded-3xl shadow-lg">
 
       {/* Imagen */}
       <div className="relative group">

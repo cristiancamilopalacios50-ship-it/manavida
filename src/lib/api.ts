@@ -33,7 +33,7 @@ export async function getFeatureSlider(): Promise<StrapiResponse<Product[]> | nu
 export async function getCategories(): Promise<StrapiResponse<Category[]> | null> {
   try {
     const res = await fetch(
-      `${API_URL}/api/categories?populate[icons]=true&populate[image][fields][0]=*`
+      `${API_URL}/api/categories?populate[icons]=true&populate[image][fields][0]=*&populate[products][fields][0]=id`
     );
     if (!res.ok) throw new Error("Error fetching categories");
     return res.json();

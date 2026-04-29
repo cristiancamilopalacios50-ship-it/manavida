@@ -18,8 +18,11 @@ function NavLinks({ onClose, categories }: { onClose?: () => void; categories: C
     <nav className="flex-col gap-1 block h-[74vh] overflow-y-auto overflow-x-hidden">
       {categories.map((cat) => {
         const isActive = activeCategory === cat.slug;
+        if (cat.products.length === 0) {
+          return null;
+        }
         return (
-          <button
+           <button
             key={cat.documentId}
             data-value={cat.slug}
             onClick={() => {
