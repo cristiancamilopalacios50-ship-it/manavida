@@ -4,9 +4,9 @@ import Spinner from "@/components/UI/spinner/spinner";
 import { getAbout } from "@/lib/api";
 import RichText from "@/components/UI/richText/richText";
 export const metadata = {
-    title: "Suplementos naturales en el Valle del Cauca y Colombia envios a nivel nacional | Maná de Vida",
+    title: "Sobre Nosotros | Mana Vida",
     description:
-        "Descubre suplementos naturales en el Valle del Cauca y Colombia para mejorar tu salud y bienestar.",
+        "Conoce Mana Vida, una tienda enfocada en bienestar y cuidado personal. Trabajamos con compromiso, atención cercana y productos seleccionados para apoyar una mejor calidad de vida.",
 };
 const about = await getAbout()
 const aboutData = about?.data

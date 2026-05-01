@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function CategoriesModule() {
     const { categories } = useApp();
-    const item = categories?.data ?? [];
+    const item = categories?.data.filter((item) => item.products.length > 0) ?? [];
 
     if (item.length === 0) {
         return null;
@@ -26,7 +26,7 @@ export default function CategoriesModule() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
 
                     {(item?.length > 0) && item.map((obj, index) => {
-                        if (obj.products.length > 0) {
+                       
                             if (index % 3 === 0) {
                                 return (
                                     <Link key={index} href={`productos?category=${obj.slug}`} className="md:col-span-2 group relative h-90 rounded-3xl overflow-hidden bg-primary cursor-pointer">
@@ -93,7 +93,7 @@ export default function CategoriesModule() {
                                 </Link>
 
                             );
-                        }
+                        
 
                     })}
                 </div>

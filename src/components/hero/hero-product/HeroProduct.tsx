@@ -36,10 +36,12 @@ export default function ProductHero({ title, description, registerInvima, flavou
         </div>
         {/* Badges */}
         <div className="absolute -bottom-6 -right-6 flex flex-col gap-3 bg-white p-4 rounded-xl shadow-sm border border-outline-variant/15">
+         {(registerInvima === null) && (
           <div className="flex items-center gap-3">
             <HeroIcons.CheckCircleIcon className="w-4 h-4 text-(--primary)" />
             <span className="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">Producto certificado</span>
           </div>
+         )}
           {laboratory && (
             <div className="flex items-center gap-3 border-t border-outline-variant/10 pt-2">
               <HeroIcons.BeakerIcon className="w-4 h-4 text-(--primary)" />
@@ -47,7 +49,7 @@ export default function ProductHero({ title, description, registerInvima, flavou
             </div>
           )}
           {registerInvima && (
-            <div className="flex items-center gap-3 border-t border-outline-variant/10 pt-2">
+            <div className="flex items-center gap-3  pt-2">
               <IconDynamic name="badgeCheck" className="w-4 h-4 text-(--primary)" />
               <span className="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">INVIMA: {registerInvima}</span>
             </div>
