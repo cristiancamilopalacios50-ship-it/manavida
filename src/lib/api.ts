@@ -2,6 +2,7 @@ import { Category } from "@/types/categories";
 import { HomeHero, Product } from "@/types/home";
 import { StrapiResponse } from "@/types/strapi";
 import { GlobalSiteResponse } from "@/types/global";
+import { AboutResponse } from "@/types/About";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -14,6 +15,18 @@ export async function getHome(): Promise<StrapiResponse<HomeHero> | null> {
     return res.json();
   } catch (error) {
     console.error("Error fetching home:", error);
+    return null;
+  }
+}
+export async function getAbout(): Promise<AboutResponse | null> {
+  try {
+    const res = await fetch(
+      `${API_URL}/api/about?populate[blocks][populate]=*`,
+      { next: { revalidate: 300 }, });
+    if (!res.ok) throw new Error("Error fetching about");
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching about:", error);
     return null;
   }
 }

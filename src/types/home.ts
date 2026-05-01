@@ -19,6 +19,7 @@ export interface HomeHero {
   image: StrapiImage;
 }
 
+
 export interface Product {
   id: number;
   documentId: string;

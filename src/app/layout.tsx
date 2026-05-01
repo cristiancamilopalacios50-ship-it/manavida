@@ -12,6 +12,7 @@ const getGlobalSiteCached = cache(getGlobalSite);
 
 const navItems: NavProps[] = [
   { name: 'Nuestros Productos', href: '/productos', icon: 'shoppingCart' },
+   { name: '¿Quienes somos?', href: '/quienes-somos', icon: 'store' },
 ];
 
 

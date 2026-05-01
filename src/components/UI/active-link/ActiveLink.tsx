@@ -26,7 +26,7 @@ export const ActiveLink = ({ path, text, icon, onClick  }: Props) => {
       }`}
       onClick={onClick}
     >
-      <IconDynamic name={icon as keyof typeof iconMap} className="md:w-4 md:h-4 w-6 h-4 mx-1"/>
+      <IconDynamic name={icon as keyof typeof iconMap} className="md:w-4 md:h-5 w-6 h- mx-1"/>
      {text}
     </Link>
   );
