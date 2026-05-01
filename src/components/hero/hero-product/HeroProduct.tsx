@@ -5,9 +5,9 @@ import * as HeroIcons from "@heroicons/react/24/solid";
 import { formatPrice } from "@/utils/priceConvert";
 import Button from "@/components/UI/button/button";
 import IconDynamic from "@/components/UI/icon/icon"
-import { PresentationAndPrice, StrapiImage } from "@/types/home"
+import { Flavour, PresentationAndPrice, StrapiImage } from "@/types/home"
 import { useApp } from "@/context/AppContext";
-export default function ProductHero({ title, description, saving, laboratory, priceAndPresentations, image, color }: { title: string, description: string, price: number, image: StrapiImage, saving?: number, laboratory?: string, priceAndPresentations: PresentationAndPrice[], color?: string }) {
+export default function ProductHero({ title, description, registerInvima, flavours, saving, laboratory, priceAndPresentations, image, color }: { title: string, description: string, registerInvima: string, price: number, image: StrapiImage, flavours?: Flavour[], saving?: number, laboratory?: string, priceAndPresentations: PresentationAndPrice[], color?: string }) {
   const [selected, setSelected] = useState(0);
   const [selectedItem, setSelectedItem] = useState(priceAndPresentations[0]);
   const { globalSite } = useApp();
@@ -27,8 +27,8 @@ export default function ProductHero({ title, description, saving, laboratory, pr
 
 
 
-          <Image src={image?.url || '/logo.png'} alt={image?.alternativeText || 'mana de vida'} className="w-full h-auto object-contain hover:scale-105 transition-transform duration-700" 
-          width={500}
+          <Image src={image?.url || '/logo.png'} alt={image?.alternativeText || 'mana de vida'} className="w-full h-auto object-contain hover:scale-105 transition-transform duration-700"
+            width={500}
             height={500} />
 
 
@@ -46,6 +46,28 @@ export default function ProductHero({ title, description, saving, laboratory, pr
               <span className="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">{laboratory}</span>
             </div>
           )}
+          {registerInvima && (
+            <div className="flex items-center gap-3 border-t border-outline-variant/10 pt-2">
+              <IconDynamic name="badgeCheck" className="w-4 h-4 text-(--primary)" />
+              <span className="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">INVIMA: {registerInvima}</span>
+            </div>
+          )}
+
+          {flavours?.map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-3 border-t border-outline-variant/10 pt-2"
+            >
+              <IconDynamic
+                name={item.icon.icon}
+                className="w-4 h-4 text-(--primary)"
+              />
+
+              <span className="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant font-['Manrope']">
+              sabor:  {item.title}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -125,8 +147,8 @@ export default function ProductHero({ title, description, saving, laboratory, pr
           <div className="items-center gap-2 text-sm text-on-surface-variant block text-center">
 
             <Button
-         title={whatsappBtnText}
-  href={`https://wa.me/${whatsappNumber}?text=Hola, quiero comprar ${title} de ${selectedItem.presentation} por ${formatPrice(selectedItem.price)}`}
+              title={whatsappBtnText}
+              href={`https://wa.me/${whatsappNumber}?text=Hola, quiero comprar ${title} de ${selectedItem.presentation} por ${formatPrice(selectedItem.price)}`}
 
             />
           </div>

@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 import { Category } from "./categories";
 import { Benefits } from "./benefits";
+import { iconMap } from "@/utils/icons";
+export type IconName = keyof typeof iconMap;
 
 
 export interface HeroHomeClientProps {
@@ -48,6 +50,8 @@ export interface Product {
   shortDescription?:string;
   colorProduct:string;
   benefits: Benefits[];
+  registerInvima:string;
+  flavours: Flavour[];
 }
 export interface PropsProduct {
   params: Promise<{ slug: string }>;
@@ -71,7 +75,12 @@ export interface StrapiImage {
   alternativeText: string;
   name: string;
 }
-
+export interface Flavour {
+  title: string;
+  icon:  {
+    icon: IconName;
+  };
+}
 export interface StrapiButton {
   name: string;
   style: string;

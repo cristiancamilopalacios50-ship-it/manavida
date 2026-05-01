@@ -14,11 +14,11 @@ const aboutData = about?.data
 const title = aboutData?.title
 
 const textBlock = aboutData?.blocks.find(
-  (block) => block.__component === 'shared.rich-text'
+    (block) => block.__component === 'shared.rich-text'
 )
 
 const mediaBlock = aboutData?.blocks.find(
-  (block) => block.__component === 'shared.media'
+    (block) => block.__component === 'shared.media'
 )
 
 const description = textBlock?.body

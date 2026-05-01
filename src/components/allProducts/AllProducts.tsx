@@ -7,7 +7,7 @@ import Image from "next/image";
 import { formatPrice } from "@/utils/priceConvert";
 import Button from "../UI/button/button";
 import Pagination from "../UI/pagination/pagination";
-import { Suspense } from 'react'
+
 
 export default function AllProducts() {
   const { products, categories, globalSite } = useApp();

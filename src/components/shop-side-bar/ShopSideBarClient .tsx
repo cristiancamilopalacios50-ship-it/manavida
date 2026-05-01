@@ -6,13 +6,18 @@ import { useRouter, useSearchParams } from "next/navigation";
 import IconDynamic from "@/components/UI/icon/icon"
 import { useApp } from "@/context/AppContext";
 
-function NavLinks({ onClose, categories }: { onClose?: () => void; categories: Category[] }) {
+function NavLinks({
+  onClose,
+  categories,
+  activeCategory,
+}: {
+  onClose?: () => void;
+  categories: Category[];
+  activeCategory: string | null;
+}) {
+
   const router = useRouter();
-  const searchParams = useSearchParams();
 
-
-
-  const activeCategory = new URLSearchParams(searchParams.toString()).get("category");
 
   return (
     <nav className="flex-col gap-1 block h-[74vh] overflow-y-auto overflow-x-hidden">
@@ -49,7 +54,10 @@ function NavLinks({ onClose, categories }: { onClose?: () => void; categories: C
 
 
 export default function ShopSideBarClient() {
-  const [open, setOpen] = useState(true);
+  const searchParams = useSearchParams();
+  const activeCategory = new URLSearchParams(searchParams.toString()).get("category");
+
+  const [open, setOpen] = useState(!activeCategory)
   const { categories } = useApp();
   const safeCategories = categories?.data ?? [];
 
@@ -80,7 +88,7 @@ export default function ShopSideBarClient() {
             <IconDynamic name="close" className="w-5 h-5 text-(--primary-container) cursor-pointer" />
           </button>
         </div>
-        <NavLinks categories={safeCategories} onClose={() => setOpen(false)} />
+        <NavLinks categories={safeCategories} onClose={() => setOpen(false)} activeCategory={activeCategory} />
       </div>
 
       <aside className="w-65 fixed left-0 h-[100vw] z-40 border-r border-slate-100 bg-slate-50 flex-col pt-30 pb-8 hidden lg:flex position-absolute ">
@@ -88,7 +96,7 @@ export default function ShopSideBarClient() {
           <h3 className="font-['Manrope'] text-sm uppercase tracking-widest text-emerald-800 font-bold">Nuestras categorías</h3>
           <p className="text-[10px] text-slate-500 uppercase tracking-tighter">Maná de vida</p>
         </div>
-        <NavLinks categories={safeCategories} />
+        <NavLinks categories={safeCategories} activeCategory={activeCategory} />
       </aside>
     </>
   );

@@ -73,7 +73,7 @@ export async function getProductBySlug(slug: string): Promise<StrapiResponse<Pro
   try {
 
     const res = await fetch(
-      `${API_URL}/api/products?filters[sku][$eq]=${slug}&populate[image][fields][0]=*&populate[categories][fields][0]=name&populate[categories][fields][1]=slug&populate[compositionProd][fields][0]=*&populate[presentationAndPrice][fields][0]=*&populate[imageConsume][fields][0]=*&populate[consumeProd][fields][0]=*&populate[benefits][populate][icon]=*`
+      `${API_URL}/api/products?filters[sku][$eq]=${slug}&populate[image][fields][0]=*&populate[categories][fields][0]=name&populate[categories][fields][1]=slug&populate[compositionProd][fields][0]=*&populate[presentationAndPrice][fields][0]=*&populate[imageConsume][fields][0]=*&populate[consumeProd][fields][0]=*&populate[benefits][populate][icon]=*&populate[flavours][populate][icon]=*`
     );
 
     if (!res.ok) throw new Error("Error fetching product");
