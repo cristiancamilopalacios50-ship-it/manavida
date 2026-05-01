@@ -49,7 +49,7 @@ function NavLinks({ onClose, categories }: { onClose?: () => void; categories: C
 
 
 export default function ShopSideBarClient() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const { categories } = useApp();
   const safeCategories = categories?.data ?? [];
 

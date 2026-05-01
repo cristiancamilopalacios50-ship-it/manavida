@@ -9,12 +9,13 @@ import { formatPrice } from "@/utils/priceConvert";
 import IconDynamic from "../UI/icon/icon";
 
 
-function ResultItem({ result }: { result: Product }) {
+function ResultItem({ result, cleanSearch }: { result: Product; cleanSearch: () => void }) {
     return (
         <li>
             <Link
                 href={result.sku ?? ""}
                 className="bg-white flex items-center p-4 hover:bg-slate-50  transition-colors border-b-(--primary)  group rounded-b-lg "
+                onClick={cleanSearch}
             >
                 {/* Thumbnail */}
                 <div className="w-12 h-12 bg-surface-container flex-shrink-0 overflow-hidden mr-4 relative border border-outline-variant/20">
@@ -154,7 +155,7 @@ export default function FilterClientModule() {
 
                         <ul className="max-h-[320px] overflow-y-auto font-['Manrope']">
                             {results?.map((result) => (
-                                <ResultItem key={result.id} result={result} />
+                                <ResultItem key={result.id} result={result} cleanSearch={clearSearch} />
                             ))}
                         </ul>
 
