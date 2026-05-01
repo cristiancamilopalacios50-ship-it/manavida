@@ -102,8 +102,8 @@ export default function AllProducts() {
                       )}
                     </>
                   ) : (
-                    product.price && formatPrice(product.price)
-                  )}
+                    product.price && formatPrice(product.price) 
+                  )} 
                 </span>
               </div>
 
