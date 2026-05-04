@@ -11,7 +11,7 @@ import IconDynamic from "../UI/icon/icon";
 export default function ProductsFeatureClient({ products }: ProductsFeatureClientProps) {
     return (
 
-        <section className="pt-32 md:px-8 bg-surface relative w-full font-['Manrope']">
+        <section className="pt-15 sm:pt-25 md:px-8 bg-surface relative w-full font-['Manrope']">
             <div className="w-full mx-auto">
                 <div className="flex items-center gap-4 mb-16">
                     <div className="h-px grow bg-(--primary)"></div>
