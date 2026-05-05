@@ -172,7 +172,7 @@ export default function ProductHero({ id, title, description, registerInvima, fl
 
             <Button
               title={whatsappBtnText}
-              href={`https://wa.me/${whatsappNumber}?text=Hola, quiero comprar ${title} de ${selectedItem.presentation} por ${formatPrice(selectedItem.price)}`}
+              href={`https://wa.me/${whatsappNumber}?text=Hola, me interesa comprar ${title} (${selectedItem.presentation}) en cantidad de ${quantity} por un total de ${formatPrice(selectedItem.price * quantity)}`}
 
             />
           </div>

@@ -100,7 +100,7 @@ export default function Quoter({ id, presentationValue, quantity }: { id: number
                 )}
             </div>
             <div className="pt-2 border-t border-outline-variant/10">
-                <p className="text-xs text-on-surface-variant text-center italic">Ingresa tu ubicación para calcular el costo de envío</p>
+                <p className="text-xs text-on-surface-variant text-center italic">*El valor del envío es estimado y puede variar según las condiciones de la transportadora. Esta cotización sirve como guía aproximada del costo final.</p>
             </div>
         </div>
     );
