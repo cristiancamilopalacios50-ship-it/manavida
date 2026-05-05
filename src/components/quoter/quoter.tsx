@@ -1,5 +1,5 @@
 "use client";
-import IconDynamic from "../ui/icon/icon";
+import IconDynamic from "../UI/icon/icon";
 import { municipios } from "@/utils/colombia-cities";
 import { calculateShippingPrice } from "@/lib/shipping";
 import {
@@ -9,11 +9,11 @@ import {
     ComboboxInput,
     ComboboxItem,
     ComboboxList,
-} from "@/components/ui/combobox/combobox"
+} from "@/components/UI/combobox/combobox"
 import { useState } from "react";
-import Button from "../ui/button/button";
+import Button from "../UI/button/button";
 import { formatPrice } from "@/utils/priceConvert";
-import Spinner from "../ui/spinner/spinner";
+import Spinner from "../UI/spinner/spinner";
 export default function Quoter({ id, presentationValue, quantity }: { id: number, presentationValue: string, quantity: number }) {
 
     const [selectedNumero, setSelectedNumero] = useState("");

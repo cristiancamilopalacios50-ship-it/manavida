@@ -3,8 +3,8 @@ import { useState } from "react";
 import Image from "next/image";
 import * as HeroIcons from "@heroicons/react/24/solid";
 import { formatPrice } from "@/utils/priceConvert";
-import Button from "@/components/ui/button/button";
-import IconDynamic from "@/components/ui/icon/icon";
+import Button from "@/components/UI/button/button";
+import IconDynamic from "@/components/UI/icon/icon";
 import Quoter from "@/components/quoter/quoter";
 import { Flavour, PresentationAndPrice, StrapiImage } from "@/types/home"
 import { useApp } from "@/context/AppContext";

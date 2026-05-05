@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ButtonProps } from "@/types/button";
 import { iconMap } from "@/utils/icons";
-import IconDynamic from "../icon/icon";
+import IconDynamic from "@/components/UI/icon/icon";
 
 export default function Button({
   title,

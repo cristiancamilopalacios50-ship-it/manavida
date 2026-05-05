@@ -1,5 +1,5 @@
 import { Benefits } from "@/types/benefits";
-import IconDynamic from "../ui/icon/icon";
+import IconDynamic from "../UI/icon/icon";
 import { iconMap } from "@/utils/icons";
 
 

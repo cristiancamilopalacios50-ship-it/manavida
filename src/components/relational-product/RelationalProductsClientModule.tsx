@@ -7,7 +7,7 @@ import { Autoplay, Navigation } from "swiper/modules";
 import Image from "next/image";
 import { formatPrice } from "@/utils/priceConvert";
 import Link from "next/link";
-import IconDynamic from "../ui/icon/icon";
+import IconDynamic from "../UI/icon/icon";
 
 export default function RelationalProductsClientModule({ productWithslug }: { productWithslug: Product }) {
     const { products } = useApp();

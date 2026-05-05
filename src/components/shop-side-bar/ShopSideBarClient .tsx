@@ -3,7 +3,7 @@ import { useState } from "react";
 import { iconMap } from "@/utils/icons";
 import { Category } from "@/types/categories";
 import { useRouter, useSearchParams } from "next/navigation";
-import IconDynamic from "@/components/ui/icon/icon"
+import IconDynamic from "@/components/UI/icon/icon"
 import { useApp } from "@/context/AppContext";
 
 function NavLinks({

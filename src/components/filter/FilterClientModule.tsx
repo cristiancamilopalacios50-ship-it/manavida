@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Product } from "@/types/home";
 import { useApp } from "@/context/AppContext";
 import { formatPrice } from "@/utils/priceConvert";
-import IconDynamic from "../ui/icon/icon";
+import IconDynamic from "../UI/icon/icon";
 
 
 function ResultItem({ result, cleanSearch }: { result: Product; cleanSearch: () => void }) {
