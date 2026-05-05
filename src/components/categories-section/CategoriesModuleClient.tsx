@@ -2,7 +2,7 @@
 "use client"
 import { useApp } from "@/context/AppContext";
 import Image from "next/image";
-import IconDynamic from "../UI/icon/icon";
+import IconDynamic from "../ui/icon/icon";
 import Link from "next/link";
 
 

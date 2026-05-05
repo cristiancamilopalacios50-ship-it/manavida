@@ -2,7 +2,7 @@
 import { Suspense } from "react";
 import AllProducts from "@/components/allProducts/AllProducts";
 import ShopSideBarClient from "@/components/shop-side-bar/ShopSideBarClient ";
- import Spinner from "@/components/UI/spinner/spinner";
+ import Spinner from "@/components/ui/spinner/spinner";
 export const metadata = {
   title: "Suplementos naturales en el Valle del Cauca y Colombia envios a nivel nacional | Maná de Vida",
   description:

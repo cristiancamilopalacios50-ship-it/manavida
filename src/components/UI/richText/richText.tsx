@@ -12,7 +12,7 @@ export default function RichText({
             <div className="container mx-auto px-8 max-w-6xl">
 
                 <div className="mb-16">
-                    <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-(--primary) leading-none text-center">
+                    <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-(--on-primary-fixed-variant) leading-none text-center">
                         {title}
                     </h1>
                 </div>

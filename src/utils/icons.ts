@@ -21,7 +21,7 @@ import {
     X,Search,MoveRight,StepForward,StepBack,
     ShoppingBasket,
     ShoppingCart,
-    House, Star,Rose,GrapeIcon,RulerIcon,Laugh,Bone,Store,BadgeCheck
+    House, Star,Rose,GrapeIcon,RulerIcon,Laugh,Bone,Store,BadgeCheck,Minus,Plus
   
 } from "lucide-react";
 
@@ -139,7 +139,9 @@ export const cartIcons = {
  house:House,
  star:Star,
  store:Store,
- badgeCheck:BadgeCheck
+ badgeCheck:BadgeCheck,
+ minus:Minus,
+ plus:Plus
 };
 
 export const iconMap = {

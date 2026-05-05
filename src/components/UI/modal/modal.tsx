@@ -4,7 +4,7 @@ import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { ModalState } from "@/types/modal";
 import ReactMarkdown from "react-markdown";
 import styles from "./modal.module.css";
-import Button from "@/components/UI/button/button"
+import Button from "@/components/ui/button/button"
 type Props = ModalState & {
     onClose: () => void;
 };

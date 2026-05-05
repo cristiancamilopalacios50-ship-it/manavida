@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import   IconDynamic from "@/components/UI/icon/icon"
+import   IconDynamic from "@/components/ui/icon/icon"
 import { iconMap } from "@/utils/icons";
 interface Props {
   path: string;

@@ -53,8 +53,8 @@ export default function HeroHomeClient({ heroData }: HeroHomeClientProps) {
                 <div className="absolute inset-0 bg-black/60" />
             </div>
 
-            <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
-            <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 via-transparent to-accent/5" />
+            <div className="absolute inset-0 bg-gradient-to-b " />
+            <div className="absolute inset-0 bg-gradient-to-tr " />
 
             {/* Content */}
             <div

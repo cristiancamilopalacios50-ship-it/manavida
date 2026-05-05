@@ -4,7 +4,7 @@ import { Product } from "@/types/home";
 import { StrapiResponse } from "@/types/strapi";
 import { Category } from "@/types/categories";
 import { GlobalSiteResponse } from "@/types/global";
-import ModalClientModule from "@/components/UI/modal/modal";
+import ModalClientModule from "@/components/ui/modal/modal";
 import { ModalState } from "@/types/modal";
 
 type AppContextType = {

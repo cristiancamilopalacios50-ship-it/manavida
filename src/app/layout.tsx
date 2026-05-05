@@ -3,10 +3,14 @@ import type { Metadata } from "next";
 import { Navbar} from "@/components";
 import { getProducts, getGlobalSite, getCategories } from "@/lib/api";
 import { AppProvider } from "@/context/AppContext";
-import { Manrope } from "next/font/google";
+import { Manrope, Inter, Geist } from "next/font/google";
+
 import FooterModule from "@/components/footer/footer";
 import { NavProps } from "@/types/global";
 import { cache } from "react";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const getGlobalSiteCached = cache(getGlobalSite);
 
@@ -19,6 +23,11 @@ const navItems: NavProps[] = [
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -72,8 +81,8 @@ export default async function RootLayout({
   ]);
 
   return (
-    <html lang="en">
-      <body className={"bg-surface " + manrope.variable}>
+    <html lang="en" className={cn("font-sans", geist.variable)}>
+      <body className={"bg-surface " + manrope.variable + " " + inter.variable}>
         <AppProvider value={{ products, categories, globalSite }}>
           <Navbar items={navItems}  />
           {children}

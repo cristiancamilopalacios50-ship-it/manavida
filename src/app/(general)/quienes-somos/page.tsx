@@ -1,8 +1,8 @@
 
 import { Suspense } from "react";
-import Spinner from "@/components/UI/spinner/spinner";
+import Spinner from "@/components/ui/spinner/spinner";
 import { getAbout } from "@/lib/api";
-import RichText from "@/components/UI/richText/richText";
+import RichText from "@/components/ui/richText/richText";
 export const metadata = {
     title: "Sobre Nosotros | Mana Vida",
     description:

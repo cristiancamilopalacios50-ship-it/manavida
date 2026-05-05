@@ -7,11 +7,11 @@ import {
     PopoverGroup,
 
 } from '@headlessui/react'
-import IconDynamic from '../UI/icon/icon'
+import IconDynamic from '../ui/icon/icon'
 import { NavProps } from "@/types/global";
 import Image from 'next/image';
 import Link from 'next/link';
-import { ActiveLink } from '@/components/UI/active-link/ActiveLink';
+import { ActiveLink } from '@/components/ui/active-link/ActiveLink';
 import FilterModule from "@/components/filter/Filter";
 
 export default function NavbarClientModule({ items }: { items: NavProps[] }) {

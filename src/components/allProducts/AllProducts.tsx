@@ -5,8 +5,8 @@ import { useApp } from "@/context/AppContext";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { formatPrice } from "@/utils/priceConvert";
-import Button from "../UI/button/button";
-import Pagination from "../UI/pagination/pagination";
+import Button from "../ui/button/button";
+import Pagination from "../ui/pagination/pagination";
 
 
 export default function AllProducts() {

@@ -4,9 +4,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { ProductsFeatureClientProps } from "@/types/home";
 import Image from "next/image";
-import Button from "@/components/UI/button/button";
+import Button from "@/components/ui/button/button";
 import { formatPrice } from "@/utils/priceConvert";
-import IconDynamic from "../UI/icon/icon";
+import IconDynamic from "../ui/icon/icon";
 
 export default function ProductsFeatureClient({ products }: ProductsFeatureClientProps) {
     return (
