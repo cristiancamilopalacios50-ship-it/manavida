@@ -125,7 +125,11 @@ export default function ProductHero({ id, title, description, registerInvima, fl
                 name="quantity"
                 className="w-16 border rounded text-center font-semibold text-black bg-(--surface-container-low)"
               />
-              <button className="p-1 hover:text-primary" onClick={increase}><IconDynamic name="plus" /></button>
+              {(quantity < 5) && (
+                <button className="p-1 hover:text-primary" onClick={increase}>
+                  <IconDynamic name="plus" />
+                </button>
+              )}
             </div>
             {priceAndPresentations.map((item, index) => (
               <label
