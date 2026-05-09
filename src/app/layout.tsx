@@ -53,13 +53,22 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: "es_CO",
       type: "website",
     },
+      keywords: [
+    "suplementos deportivos",
+    "proteína",
+    "creatina",
+    "vitaminas",
+    "bienestar",
+    "Roldanillo",
+    "Valle del Cauca",
+  ],
     twitter: {
       card: "summary_large_image",
       title: globalData?.siteName ?? "maná de vida",
       description: globalData?.siteDescription,
       images: globalData?.favicon?.url
         ? [globalData.favicon.url]
-        : [],
+        : './logo.png',
     },
     metadataBase: new URL(
       globalData?.urlSite ?? "https://tiendamanadevida.com"
@@ -82,6 +91,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
+
       <body className={"bg-surface " + manrope.variable + " " + inter.variable}>
         <AppProvider value={{ products, categories, globalSite }}>
           <Navbar items={navItems}  />
